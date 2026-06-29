@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHOSARA Logo Construction Grid v2.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Archivo+Expanded:wght@600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F4EF; --panel:#FBFBF8; --ink:#16171B; --sub:#71737A; --faint:#9A9C9F;
+    --line:#DCDCD4; --line2:#E8E8E1; --blue:#1763A6; --blue-t:rgba(23,99,166,.10);
+    --red:#E60012; --red-t:rgba(230,0,18,.08); --dark:#0B0B0D; --maxw:980px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;font-weight:400;line-height:1.85;letter-spacing:.01em;font-feature-settings:"palt" 1}
+  ::selection{background:var(--red);color:#fff}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .mono{font-family:"JetBrains Mono",monospace;font-feature-settings:normal}
+  .reg{position:relative}
+  .reg::before,.reg::after{content:"";position:absolute;width:13px;height:13px;pointer-events:none}
+  .reg::before{top:-1px;left:-1px;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+  .reg::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--ink);border-right:1.5px solid var(--ink)}
+  .xhair{display:inline-block;width:11px;height:11px;position:relative;vertical-align:middle}
+  .xhair::before,.xhair::after{content:"";position:absolute;background:var(--red)}
+  .xhair::before{left:50%;top:0;width:1.4px;height:100%;transform:translateX(-50%)}
+  .xhair::after{top:50%;left:0;height:1.4px;width:100%;transform:translateY(-50%)}
+
+  .cover{background:var(--dark);color:#EDEDE8;position:relative;overflow:hidden}
+  .cover .wrap{padding-top:64px;padding-bottom:64px}
+  .cover-grid{position:absolute;inset:0;background-image:
+     linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+     linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+     background-size:60px 60px;pointer-events:none}
+  .cover-tick{position:absolute;top:18px;left:0;right:0;display:flex;justify-content:space-between;
+     font:500 10px/1 "JetBrains Mono",monospace;color:#5B5C5F;letter-spacing:.18em;padding:0 28px}
+  .cover-mark{display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin:26px 0 40px}
+  .cover-mark svg{width:206px;height:206px;flex:none}
+  .eyebrow{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.30em;color:var(--red);text-transform:uppercase}
+  h1.title{font-family:"Archivo Expanded","Archivo",sans-serif;font-weight:700;
+     font-size:clamp(32px,6.4vw,60px);line-height:1.02;letter-spacing:.01em;margin:14px 0 0;color:#fff}
+  h1.title .v{color:var(--red)}
+  .cover-sub{color:#A7A8AB;max-width:580px;margin-top:18px;font-weight:300;font-size:15px}
+  .cover-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1d1d20;border:1px solid #1d1d20;margin-top:46px}
+  .cover-meta div{background:var(--dark);padding:16px 18px}
+  .cover-meta dt{font:500 9.5px/1 "JetBrains Mono",monospace;letter-spacing:.2em;color:#6a6b6e;text-transform:uppercase}
+  .cover-meta dd{margin:8px 0 0;font:500 14px/1.3 "JetBrains Mono",monospace;color:#E9E9E4}
+
+  section{padding:72px 0 8px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:26px}
+  .sec-no{font:700 13px/1 "JetBrains Mono",monospace;color:var(--red);letter-spacing:.1em;border:1.5px solid var(--ink);padding:7px 9px;flex:none}
+  .sec-ttl{margin:0;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(20px,3.4vw,27px);letter-spacing:.005em;line-height:1.2}
+  .sec-ttl small{display:block;font:500 11px/1.4 "JetBrains Mono",monospace;color:var(--sub);letter-spacing:.16em;margin-top:7px;text-transform:uppercase}
+  p{margin:0 0 16px}.lead{font-size:15.5px;color:#2c2d31}
+  .note{font-size:13px;color:var(--sub);line-height:1.8}
+  .kicker{font:600 11px/1 "JetBrains Mono",monospace;letter-spacing:.2em;color:var(--blue);text-transform:uppercase;margin:30px 0 12px;display:flex;align-items:center;gap:9px}
+  .kicker::before{content:"";width:18px;height:1.5px;background:var(--blue)}
+
+  .plate{background:var(--panel);border:1px solid var(--line);padding:24px;margin:8px 0 22px;position:relative}
+  .plate-dark{background:var(--dark);border-color:#222}
+  .plate .cap{display:block;font:500 10px/1.5 "JetBrains Mono",monospace;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:16px}
+  .plate-dark .cap{color:#6c6d70}
+  .plate svg{display:block;width:100%;height:auto}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0 20px;font-size:13.5px}
+  caption{caption-side:top;text-align:left;font:500 10px/1.5 "JetBrains Mono",monospace;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;padding-bottom:10px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line2);vertical-align:top}
+  thead th{border-bottom:1.5px solid var(--ink);font-weight:700;font-size:12px;letter-spacing:.04em;white-space:nowrap}
+  tbody tr:hover{background:var(--blue-t)}
+  td.num,th.num{font-family:"JetBrains Mono",monospace;font-weight:500;white-space:nowrap}
+  .key{color:var(--red);font-weight:700}
+  .tag{display:inline-block;font:600 10px/1 "JetBrains Mono",monospace;letter-spacing:.08em;padding:4px 7px;border:1px solid var(--line);border-radius:2px;color:var(--sub);background:#fff}
+  .tag.ok{color:#1c7a3f;border-color:#bfe3cc;background:#f1faf4}
+  .tag.warn{color:#9a5b00;border-color:#eed6ad;background:#fbf4e7}
+  .tag.no{color:var(--red);border-color:#f1c2c6;background:#fdeef0}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:760px){.cols{grid-template-columns:1fr}.cover-meta{grid-template-columns:1fr 1fr}}
+  .score{display:grid;grid-template-columns:160px 1fr 52px;align-items:center;gap:14px;margin:0 0 13px}
+  .score .lab{font-size:13.5px;font-weight:500}.score .bar{height:8px;background:var(--line2);position:relative;border-radius:1px}
+  .score .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);border-radius:1px}.score .bar i.hi{background:var(--red)}
+  .score .val{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:14px;text-align:right}
+  .score .val s{color:var(--faint);text-decoration:none;font-weight:400;font-size:11px}
+
+  .variants{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 18px}
+  @media(max-width:680px){.variants{grid-template-columns:repeat(2,1fr)}}
+  .vcell{border:1px solid var(--line);background:#fff}
+  .vcell .sw{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+  .vcell .sw svg{width:66%;height:66%}
+  .vcell .lab{padding:11px 13px;border-top:1px solid var(--line)}
+  .vcell .lab b{display:block;font-size:13px;font-weight:700}.vcell .lab span{display:block;font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.65}
+
+  .ladder{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);padding:26px 24px;margin:6px 0 8px}
+  .ladder .lz{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .ladder .lz .cap{font:500 10px/1 "JetBrains Mono",monospace;color:var(--sub);letter-spacing:.05em}
+
+  .callout{border-left:2.5px solid var(--red);background:var(--red-t);padding:14px 18px;margin:18px 0;font-size:13.5px;line-height:1.8}
+  .callout b{color:var(--red)}
+  .callout.blue{border-color:var(--blue);background:var(--blue-t)}.callout.blue b{color:var(--blue)}
+  ul.clean{margin:0 0 16px;padding-left:0;list-style:none}
+  ul.clean li{position:relative;padding-left:22px;margin-bottom:9px;font-size:13.5px;line-height:1.8}
+  ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;background:var(--red);border-radius:50%}
+  ul.dash li::before{top:.85em;height:1.5px;width:11px;border-radius:0;background:var(--ink)}
+
+  footer{border-top:1px solid var(--line);margin-top:64px;padding:34px 0 70px;color:var(--sub);font-size:12px}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+  footer .mono{font-size:11px;letter-spacing:.1em}
+  .toc{columns:2;column-gap:36px;margin:8px 0 0;padding:0;list-style:none}
+  @media(max-width:680px){.toc{columns:1}}
+  .toc li{break-inside:avoid;border-bottom:1px solid var(--line2);padding:11px 0;display:flex;gap:13px;align-items:baseline}
+  .toc li a{color:var(--ink);text-decoration:none;font-size:13.5px}.toc li a:hover{color:var(--red)}
+  .toc .n{font:700 11px/1 "JetBrains Mono",monospace;color:var(--red)}
+  @media print{.cover-grid,.cover-tick{display:none}body{background:#fff}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ph" viewBox="0 0 1200 1200">
+    <path d="M819.5 395.5A332 332 0 1 0 819.5 804.5A287.2 287.2 0 1 1 819.5 395.5Z" fill="currentColor"/>
+    <polygon points="572,503 628,503 600,185" fill="currentColor"/>
+    <polygon points="572,697 628,697 600,1015" fill="currentColor"/>
+    <polygon points="503,572 503,628 185,600" fill="currentColor"/>
+    <polygon points="692,572 692,628 893,600" fill="currentColor"/>
+    <circle cx="599.5" cy="599.5" r="75" fill="#E60012"/>
+  </symbol>
+  <symbol id="ph-ko" viewBox="0 0 1200 1200">
+    <path d="M819.5 395.5A332 332 0 1 0 819.5 804.5A287.2 287.2 0 1 1 819.5 395.5Z" fill="currentColor"/>
+    <polygon points="572,503 628,503 600,185" fill="currentColor"/>
+    <polygon points="572,697 628,697 600,1015" fill="currentColor"/>
+    <polygon points="503,572 503,628 185,600" fill="currentColor"/>
+    <polygon points="692,572 692,628 893,600" fill="currentColor"/>
+    <circle cx="599.5" cy="599.5" r="75" fill="var(--ko,#fff)"/>
+  </symbol>
+</svg>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-tick"><span>PHOSARA — BRAND IDENTITY SYSTEM</span><span>MEASURED-ARTWORK EDITION / 機密</span></div>
+  <div class="wrap">
+    <div class="cover-mark">
+      <svg viewBox="0 0 1200 1200" style="color:#fff" role="img" aria-label="PHOSARA symbol"><use href="#ph"/></svg>
+      <div>
+        <div class="eyebrow">実測値準拠 作図仕様書 — Measured Construction</div>
+        <h1 class="title">PHOSARA<br>Logo Construction<br>Grid <span class="v">v2.0</span></h1>
+        <p class="cover-sub">本書は承認原版アートワーク（1200×1200px）から<b>直接実測した値のみ</b>で構成される正規作図基準である。正規化・対称化・数理最適化・幾何再構築は一切行わず、原版を<b>実測どおり</b>に文書化する。v1.0（理論系）は本書により破棄・代替される。</p>
+      </div>
+    </div>
+    <dl class="cover-meta">
+      <div><dt>Document</dt><dd>CG-2026-02</dd></div>
+      <div><dt>Source</dt><dd>承認原版・実測</dd></div>
+      <div><dt>Canvas</dt><dd>1200 × 1200 px</dd></div>
+      <div><dt>Issue</dt><dd>v2.0 — 2026</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- TOC -->
+<section style="border-top:none;padding-top:54px">
+  <div class="sec-head"><span class="sec-no">00</span><h2 class="sec-ttl">目次<small>Table of Contents</small></h2></div>
+  <ol class="toc">
+    <li><span class="n">01</span><a href="#s1">作図グリッド（1200px 原寸座標系・実測）</a></li>
+    <li><span class="n">02</span><a href="#s2">実測プロポーション（非正規化）</a></li>
+    <li><span class="n">03</span><a href="#s3">セーフエリア（実測コアØ基準）</a></li>
+    <li><span class="n">04</span><a href="#s4">最小サイズ規定</a></li>
+    <li><span class="n">05</span><a href="#s5">モノクロ・特殊加工規定</a></li>
+    <li><span class="n">06</span><a href="#s6">SVG 製版ガイド（実測パス）</a></li>
+    <li><span class="n">07</span><a href="#s7">商標適性レビュー</a></li>
+    <li><span class="n">08</span><a href="#s8">デザイン監査</a></li>
+  </ol>
+  <div class="callout" style="margin-top:26px">
+    <b>基準の原則 —</b> 本書の全数値は承認原版から実測した <span class="mono">px 値</span> である。原版の自己注釈（<span class="mono">664.09 / 574.45 / 843.1 / 149.96 / 55.72 px</span>）と一致を確認済み。理論的な丸め・対称化・モジュール化は適用していない。十字は<b>非対称</b>（右スパイクのみ約30%短い）であり、これを是正せずそのまま記録する。
+  </div>
+</section>
+
+<!-- ============ 01 ============ -->
+<section id="s1">
+  <div class="sec-head"><span class="sec-no">01</span><h2 class="sec-ttl">作図グリッド<small>Construction Grid — 1200px Native, As-Measured</small></h2></div>
+  <p class="lead">座標系は原版アートワークの実寸 1200×1200px をそのまま用いる。三日月は半径の異なる<b>実測二円</b>の減算、十字は基部約56px から鋭点へ先細る<b>非対称な4スパイク</b>、赤コアは実測正円で構成される。下図の青破線＝実測円、赤○＝実測スパイク先端、紫□＝月の角。</p>
+
+  <div class="plate reg">
+    <span class="cap">PLATE 01 — Master Construction（実測） / 1200px</span>
+    <svg viewBox="0 0 1200 1200">
+      <g stroke="#e3e3da" stroke-width="1">
+        <g>
+          <line x1="0" y1="200" x2="1200" y2="200"/><line x1="0" y1="400" x2="1200" y2="400"/>
+          <line x1="0" y1="800" x2="1200" y2="800"/><line x1="0" y1="1000" x2="1200" y2="1000"/>
+          <line x1="200" y1="0" x2="200" y2="1200"/><line x1="400" y1="0" x2="400" y2="1200"/>
+          <line x1="800" y1="0" x2="800" y2="1200"/><line x1="1000" y1="0" x2="1000" y2="1200"/>
+        </g>
+      </g>
+      <!-- faint solid mark -->
+      <g opacity="0.15" fill="#16171b">
+        <path d="M819.5 395.5A332 332 0 1 0 819.5 804.5A287.2 287.2 0 1 1 819.5 395.5Z"/>
+        <polygon points="572,503 628,503 600,185"/><polygon points="572,697 628,697 600,1015"/>
+        <polygon points="503,572 503,628 185,600"/><polygon points="692,572 692,628 893,600"/>
+      </g>
+      <!-- center axes through core -->
+      <g stroke="#b9bbbe" stroke-width="1.4" stroke-dasharray="7 6">
+        <line x1="599.5" y1="0" x2="599.5" y2="1200"/><line x1="0" y1="600" x2="1200" y2="600"/>
+      </g>
+      <!-- measured circles -->
+      <circle cx="558" cy="600" r="332" fill="none" stroke="#1763A6" stroke-width="2.2" stroke-dasharray="10 7"/>
+      <circle cx="617.9" cy="600" r="287.2" fill="none" stroke="#1763A6" stroke-width="2.2" stroke-dasharray="3 6"/>
+      <circle cx="558" cy="600" r="6" fill="#1763A6"/><circle cx="617.9" cy="600" r="6" fill="#1763A6"/>
+      <!-- spike tips -->
+      <g fill="#E60012">
+        <circle cx="600" cy="185" r="7"/><circle cx="600" cy="1015" r="7"/>
+        <circle cx="185" cy="600" r="7"/><circle cx="893" cy="600" r="7"/>
+      </g>
+      <!-- horns -->
+      <rect x="807" y="383.5" width="24" height="24" fill="none" stroke="#B266FF" stroke-width="2.4"/>
+      <rect x="807" y="792.5" width="24" height="24" fill="none" stroke="#B266FF" stroke-width="2.4"/>
+      <!-- core -->
+      <circle cx="599.5" cy="599.5" r="75" fill="#E60012"/>
+      <!-- labels -->
+      <g font-family="JetBrains Mono" font-size="22" fill="#16171b">
+        <text x="558" y="250" fill="#1763A6" text-anchor="middle">外円 Ø664.09</text>
+        <text x="617.9" y="350" fill="#1763A6" text-anchor="middle">内円 Ø574.45</text>
+        <text x="600" y="160" fill="#E60012" text-anchor="middle">上 (600,185)</text>
+        <text x="600" y="1055" fill="#E60012" text-anchor="middle">下 (600,1015)</text>
+        <text x="150" y="640" fill="#E60012" text-anchor="middle">左 (185,600)</text>
+        <text x="905" y="595" fill="#E60012">右 (893,600) ★短</text>
+        <text x="845" y="385" fill="#B266FF">角(820,396)</text>
+        <text x="845" y="835" fill="#B266FF">角(820,804)</text>
+        <text x="610" y="595" fill="#fff">Ø150</text>
+      </g>
+    </svg>
+  </div>
+
+  <table>
+    <caption>表 1.1 — 実測 基本作図値 / Measured Master Coordinates（単位: px, 1200×1200 原版）</caption>
+    <thead><tr><th>要素</th><th>定義</th><th class="num">実測値 (px)</th><th class="num">原版注釈</th></tr></thead>
+    <tbody>
+      <tr><td>アートボード</td><td>原版原寸キャンバス</td><td class="num">1200 × 1200</td><td class="num">—</td></tr>
+      <tr><td>赤コア 中心</td><td>視覚的焦点・原版中心とほぼ一致</td><td class="num">(599.5, 599.5)</td><td class="num">—</td></tr>
+      <tr><td>赤コア 直径</td><td>正円</td><td class="num key">150.0（r 75.0）</td><td class="num">149.96 ✓</td></tr>
+      <tr><td>月 外円</td><td>中心 / 半径</td><td class="num">(558.0, 600.0) / 332.0</td><td class="num">—</td></tr>
+      <tr><td>月 外円 直径</td><td>クレセント外周</td><td class="num key">664.1</td><td class="num">664.09 ✓</td></tr>
+      <tr><td>月 内円（削り）</td><td>中心 / 半径</td><td class="num">(617.9, 600.0) / 287.2</td><td class="num">—</td></tr>
+      <tr><td>月 内円 直径</td><td>削り取り円</td><td class="num key">574.5</td><td class="num">574.45 ✓</td></tr>
+      <tr><td>二円 水平オフセット</td><td>内円中心 − 外円中心</td><td class="num">+59.9</td><td class="num">—</td></tr>
+      <tr><td>月の角（ホーン）</td><td>外円 ∩ 内円</td><td class="num">(819.5, 395.5) / (819.5, 804.5)</td><td class="num">—</td></tr>
+      <tr><td>月 最大肉厚（背側 y=600）</td><td>9時方向スパイン</td><td class="num">≈ 105</td><td class="num">—</td></tr>
+      <tr><td>スパイク 基部太さ（4本共通）</td><td>コア側・最大幅</td><td class="num key">≈ 56</td><td class="num">55.72 ✓</td></tr>
+      <tr><td>上スパイク 先端</td><td>長さ ≈ 415（中心から）</td><td class="num">(600, 185)</td><td class="num">843.1※</td></tr>
+      <tr><td>下スパイク 先端</td><td>長さ ≈ 415</td><td class="num">(600, 1015)</td><td class="num">843.1※</td></tr>
+      <tr><td>左スパイク 先端</td><td>長さ ≈ 415・月外縁を約41px貫通</td><td class="num">(185, 600)</td><td class="num">—</td></tr>
+      <tr><td>右スパイク 先端</td><td><b>長さ ≈ 293（他の約0.70倍・最短）</b></td><td class="num key">(893, 600)</td><td class="num">202.05 ✓</td></tr>
+      <tr><td>コア⇔各スパイク基部 ハロー</td><td>白い隙間</td><td class="num">≈ 22</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <p class="note">※ 上下スパイク先端間の全長は原版ベクター注釈で 843.1px（中心から各 ≈421.5px）。ラスター実測では先端の鋭点が丸まり ≈415px となる。製版時はベクター注釈値を優先する。</p>
+  <div class="callout"><b>非対称の記録 —</b> 上・下・左スパイクはほぼ等長（≈415px）だが、<b>右スパイクのみ ≈293px と短い</b>。右先端(893)は月外円の右端(≈890)にほぼ接する。これは原版固有の特徴であり、対称化してはならない。</div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="s2">
+  <div class="sec-head"><span class="sec-no">02</span><h2 class="sec-ttl">実測プロポーション<small>Measured Proportions — Non-Normalized</small></h2></div>
+  <p class="lead">比率は理論モジュールではなく、<b>実測値から導いた実際の比</b>である。参照を赤コア径（150px）とした相対値を併記するが、これは記録のための換算であり、幾何を丸める正規化ではない。</p>
+
+  <div class="plate reg">
+    <span class="cap">PLATE 02 — Measured Ratio Bars（参照: 赤コアØ=150px）</span>
+    <svg viewBox="0 0 1000 420">
+      <g font-family="JetBrains Mono" font-size="21">
+        <!-- scale: 150px(core) = 150 display units -> use factor 0.13 to fit; core bar 150*1.0 -->
+        <rect x="120" y="30" width="150" height="30" fill="#E60012"/>
+        <text x="285" y="52" fill="#E60012">赤コアØ = 150px（参照 1.00）</text>
+        <rect x="120" y="74" width="664" height="30" fill="#16171b" opacity=".9"/>
+        <text x="120" y="126" fill="#16171b">月 外円Ø = 664.09px（4.43）</text>
+        <rect x="120" y="140" width="574" height="30" fill="#3a3b3f"/>
+        <text x="120" y="192" fill="#16171b">月 内円Ø = 574.45px（3.83）</text>
+        <rect x="120" y="206" width="105" height="30" fill="#6b6c70"/>
+        <text x="240" y="228" fill="#6b6c70">月 肉厚 ≈105px（0.70）</text>
+        <rect x="120" y="250" width="293" height="30" fill="#16171b"/>
+        <text x="425" y="272" fill="#16171b">右スパイク長 ≈293px（1.95）</text>
+        <rect x="120" y="294" width="415" height="30" fill="#16171b"/>
+        <text x="547" y="316" fill="#16171b">上下左スパイク長 ≈415px（2.77）</text>
+        <rect x="120" y="338" width="56" height="30" fill="#71737a"/>
+        <text x="191" y="360" fill="#71737a">スパイク基部 ≈56px（0.37）</text>
+      </g>
+    </svg>
+  </div>
+
+  <table>
+    <caption>表 2.1 — 実測比率表（非正規化 / 参照 = 赤コアØ 150px）</caption>
+    <thead><tr><th>要素</th><th class="num">実測 (px)</th><th class="num">対コアØ 比</th></tr></thead>
+    <tbody>
+      <tr><td>赤コア 直径（参照）</td><td class="num key">150.0</td><td class="num">1.000</td></tr>
+      <tr><td>月 外円 直径</td><td class="num">664.1</td><td class="num">4.427</td></tr>
+      <tr><td>月 内円 直径</td><td class="num">574.5</td><td class="num">3.830</td></tr>
+      <tr><td>月 最大肉厚</td><td class="num">≈105</td><td class="num">≈0.700</td></tr>
+      <tr><td>二円オフセット</td><td class="num">59.9</td><td class="num">0.399</td></tr>
+      <tr><td>上・下・左スパイク長</td><td class="num">≈415</td><td class="num">≈2.767</td></tr>
+      <tr><td>右スパイク長</td><td class="num key">≈293</td><td class="num">≈1.953</td></tr>
+      <tr><td>スパイク 基部太さ</td><td class="num">≈56</td><td class="num">≈0.373</td></tr>
+      <tr><td>コア⇔スパイク ハロー</td><td class="num">≈22</td><td class="num">≈0.147</td></tr>
+    </tbody>
+  </table>
+  <div class="callout blue"><b>固有比（実測・非正規化）—</b> 月 内円/外円 = <span class="mono">574.5 / 664.1 = 0.865</span>／ 右スパイク/上下左 = <span class="mono">293 / 415 = 0.706</span>。これらは原版に存在する非整数比であり、整数モジュールへ丸めてはならない。</div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="s3">
+  <div class="sec-head"><span class="sec-no">03</span><h2 class="sec-ttl">セーフエリア<small>Clear Space — Measured Core Reference</small></h2></div>
+  <p class="lead">クリアスペース基準単位を<b>実測コア径 C = 150px</b> と定義する。シンボルの実測外接ボックスは <span class="mono">x:185–893 / y:185–1015</span>（幅 708 × 高 830）で、<b>左右非対称</b>のため外接箱中心(539,600)はコア中心(599.5,600)と一致しない。レイアウト時は外接箱を基準に余白を取る。</p>
+
+  <div class="plate reg">
+    <span class="cap">PLATE 03 — Clear Space（C = 実測コアØ 150px / 非対称外接箱）</span>
+    <svg viewBox="0 0 1200 1200">
+      <rect x="35" y="35" width="1130" height="1130" fill="none" stroke="#1763A6" stroke-width="2.2" stroke-dasharray="11 8"/>
+      <rect x="185" y="185" width="708" height="830" fill="none" stroke="#b9bbbe" stroke-width="1.6" stroke-dasharray="5 6"/>
+      <g fill="#16171b">
+        <path d="M819.5 395.5A332 332 0 1 0 819.5 804.5A287.2 287.2 0 1 1 819.5 395.5Z"/>
+        <polygon points="572,503 628,503 600,185"/><polygon points="572,697 628,697 600,1015"/>
+        <polygon points="503,572 503,628 185,600"/><polygon points="692,572 692,628 893,600"/>
+      </g>
+      <circle cx="599.5" cy="599.5" r="75" fill="#E60012"/>
+      <line x1="35" y1="600" x2="185" y2="600" stroke="#E60012" stroke-width="2"/>
+      <line x1="35" y1="585" x2="35" y2="615" stroke="#E60012" stroke-width="2"/>
+      <line x1="185" y1="585" x2="185" y2="615" stroke="#E60012" stroke-width="2"/>
+      <text x="110" y="575" font-family="JetBrains Mono" font-size="22" fill="#E60012" text-anchor="middle">1C=150</text>
+      <text x="600" y="68" font-family="JetBrains Mono" font-size="21" fill="#1763A6" text-anchor="middle">クリアスペース境界</text>
+      <text x="539" y="1130" font-family="JetBrains Mono" font-size="19" fill="#71737a" text-anchor="middle">実測外接箱 708 × 830（非対称）</text>
+    </svg>
+  </div>
+
+  <table>
+    <caption>表 3.1 — 用途別最小余白 / Clear Space（C = 実測コアØ 150px）</caption>
+    <thead><tr><th>用途</th><th class="num">最小余白</th><th class="num">px</th><th>規定</th></tr></thead>
+    <tbody>
+      <tr><td>標準ロゴ</td><td class="num key">1.0 C</td><td class="num">150</td><td>実測外接箱(708×830)の全方向外側に確保。</td></tr>
+      <tr><td>印刷物</td><td class="num key">1.5 C</td><td class="num">225</td><td>断裁・折り・箔見当を考慮。</td></tr>
+      <tr><td>アプリアイコン内マージン</td><td class="num">0.5 C</td><td class="num">75</td><td>角丸スクエア内。配置は外接箱中心(539,600)で光学調整。</td></tr>
+      <tr><td>極小UI / ファビコン</td><td class="num">0.25 C</td><td class="num">≈38</td><td>視認性優先で最小化（§04）。</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>配置上の注意 —</b> 本マークは非対称のため、コア中心で配置すると視覚的に右へ寄って見える。中央配置が必要な場合は<b>外接箱中心(539,600)</b>を基準とし、左へ約60px補正する。</div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section id="s4">
+  <div class="sec-head"><span class="sec-no">04</span><h2 class="sec-ttl">最小サイズ規定<small>Minimum Size &amp; Legibility Floor</small></h2></div>
+  <p class="lead">非対称の鋭利スパイクは縮小時に最初に消失する。特に右スパイク（短）と各先端の鋭点は小サイズで丸まり、月のシルエットと赤コアが最後まで残る。機能的下限は <b>16px</b>。</p>
+
+  <div class="ladder">
+    <div class="lz"><svg width="120" height="120" style="color:#16171b"><use href="#ph"/></svg><div class="cap">≥256px</div></div>
+    <div class="lz"><svg width="96" height="96" style="color:#16171b"><use href="#ph"/></svg><div class="cap">128px</div></div>
+    <div class="lz"><svg width="64" height="64" style="color:#16171b"><use href="#ph"/></svg><div class="cap">64px</div></div>
+    <div class="lz"><svg width="32" height="32" style="color:#16171b"><use href="#ph"/></svg><div class="cap">32px</div></div>
+    <div class="lz"><svg width="24" height="24" style="color:#16171b"><use href="#ph"/></svg><div class="cap">24px</div></div>
+    <div class="lz"><svg width="16" height="16" style="color:#16171b"><use href="#ph"/></svg><div class="cap">16px</div></div>
+  </div>
+
+  <table>
+    <caption>表 4.1 — サイズ別 ディテール生存 / Detail Survival</caption>
+    <thead><tr><th class="num">サイズ</th><th>生存するディテール</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1024 / 512px</td><td>全要素明瞭。鋭点・非対称・ハローまで完全再現。</td><td><span class="tag ok">完全</span></td></tr>
+      <tr><td class="num">256px</td><td>全要素明瞭。アプリアイコン基準として最適。</td><td><span class="tag ok">完全</span></td></tr>
+      <tr><td class="num">128px</td><td>4スパイクの長短差・月・コア良好。先端の鋭さはやや鈍化。</td><td><span class="tag ok">良好</span></td></tr>
+      <tr><td class="num">64px</td><td>月・十字・コアのバランス認識可。右スパイクの短さは判別困難に。</td><td><span class="tag ok">良好</span></td></tr>
+      <tr><td class="num">32px</td><td>月のシルエットと十字・コアが識別可。スパイクは点状に平準化。</td><td><span class="tag warn">注意</span></td></tr>
+      <tr><td class="num">16px</td><td>赤コア・十字・月シルエットが判別できる機能的最小サイズ。</td><td><span class="tag warn">下限</span></td></tr>
+      <tr><td class="num">12px 以下</td><td>シルエットのみ。赤コアが中心として機能。スパイク消失。</td><td><span class="tag no">非推奨</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>製版指示 —</b> 24px 以下では右スパイクの非対称が潰れて視認できなくなるため、等倍縮小ではなく<b>サイズ別最適化版</b>（先端を整数px化・ハローを確保）を用意する。ファビコン専用版を別途作成すること。</div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section id="s5">
+  <div class="sec-head"><span class="sec-no">05</span><h2 class="sec-ttl">モノクロ・特殊加工規定<small>Monochrome &amp; Finishing Rules</small></h2></div>
+  <p class="lead">単色版では赤コアの焦点性を保つため、コアを<b>地色抜き（ノックアウト）</b>で表現する。非対称スパイクとハローは全版で維持し、対称化や簡略化を行わない。</p>
+
+  <div class="variants">
+    <div class="vcell"><div class="sw" style="background:#fff"><svg viewBox="0 0 1200 1200" style="color:#16171b;--ko:#fff"><use href="#ph-ko"/></svg></div>
+      <div class="lab"><b>ブラック版</b><span>明地。シンボルK100。コアは地色抜きの正円で焦点保持。</span></div></div>
+    <div class="vcell"><div class="sw" style="background:#0B0B0D"><svg viewBox="0 0 1200 1200" style="color:#fff;--ko:#0B0B0D"><use href="#ph-ko"/></svg></div>
+      <div class="lab"><b>ホワイト版</b><span>暗地・写真上。シンボル白。コアは地色抜き（暗）。</span></div></div>
+    <div class="vcell"><div class="sw" style="background:#E7E6E0"><svg viewBox="0 0 1200 1200" style="color:#d8d7d0;--ko:#cfcec6"><use href="#ph-ko"/></svg></div>
+      <div class="lab"><b>エンボス版</b><span>無色・浮出し。単段デボス。コアのみ深く沈める。</span></div></div>
+    <div class="vcell"><div class="sw" style="background:#15140F"><svg viewBox="0 0 1200 1200" style="color:#C9A24B;--ko:#15140F"><use href="#ph-ko"/></svg></div>
+      <div class="lab"><b>箔押し版</b><span>月・十字を金/銀マット箔。コアのみ別版で赤箔の艶。</span></div></div>
+  </div>
+
+  <table>
+    <caption>表 5.1 — 加工別 運用規則 / Finishing Rules</caption>
+    <thead><tr><th>版</th><th>仕様</th><th>運用規則</th></tr></thead>
+    <tbody>
+      <tr><td>ブラック版</td><td>K100／コア抜き</td><td>FAX・捺印・1色印刷・刻印原稿。地の明度70%以上で使用。</td></tr>
+      <tr><td>ホワイト版</td><td>白単色／コア抜き</td><td>暗地・写真・動画。地の明度40%以下、コントラスト確保。</td></tr>
+      <tr><td>エンボス版</td><td>空押し／単段デボス</td><td>名刺・賞状・高級パッケージ。最小14mm。鋭利スパイク先端の彫りつぶれに注意。</td></tr>
+      <tr><td>箔押し版</td><td>1色箔＋赤箔別版</td><td>赤箔は見当精度が要るため最小16mm。1版時はコアも抜きで対応。</td></tr>
+    </tbody>
+  </table>
+  <ul class="clean">
+    <li>赤コアは原則唯一の有彩色要素。フルカラー版でのみ <span class="mono">PHOSARA Red</span> を用いる。</li>
+    <li>2色を超える展開（グラデーション・多色・立体光沢）は禁止。</li>
+    <li>いかなる版でも右スパイクの長さ・非対称・ハローを改変しない。</li>
+  </ul>
+  <p class="note">参考カラー：<span class="mono">PHOSARA Red ≈ #E60012 / R230 G0 B18 / 近似 Pantone 485 C</span>。最終値はマスター原版の実測に従い確定。</p>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="s6">
+  <div class="sec-head"><span class="sec-no">06</span><h2 class="sec-ttl">SVG 製版ガイド<small>SVG Production Guide — Measured Paths</small></h2></div>
+  <p class="lead">最終データは全要素アウトライン化を原則とする。十字スパイクは可変幅のためストロークでは再現できず、<b>実測座標の塗りポリゴン</b>で構築する。座標は原版実測値をそのまま用い、丸めない。</p>
+
+  <div class="cols">
+    <div>
+      <div class="kicker">構成手順</div>
+      <ul class="clean dash">
+        <li>月 ＝ 外円(558,600;332) − 内円(617.9,600;287.2) を型抜き。</li>
+        <li>十字 ＝ 実測4スパイク（非対称・独立三角形）。合体しない。</li>
+        <li>赤コア ＝ 円(599.5,599.5;75) を最前面。ハロー22pxを保持。</li>
+        <li>右スパイクは他と長さが異なる。コピー＆回転で生成しない。</li>
+      </ul>
+      <div class="kicker">ストローク／整合</div>
+      <ul class="clean dash">
+        <li>ライブストローク不可。全てアウトライン塗りに確定。</li>
+        <li>viewBox <span class="mono">0 0 1200 1200</span>。座標小数第1位まで保持。</li>
+        <li>16/24/32px 書き出し時のみキー座標を整数pxへスナップ。</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">実測パス（コピー可）</div>
+      <div class="callout blue" style="margin-top:8px">
+        <b>月 —</b><br><span class="mono" style="font-size:11px;word-break:break-all">M819.5 395.5A332 332 0 1 0 819.5 804.5A287.2 287.2 0 1 1 819.5 395.5Z</span>
+      </div>
+      <div class="callout" style="margin-top:10px">
+        <b>4スパイク（polygon points）—</b><br>
+        <span class="mono" style="font-size:11px;line-height:1.9">
+        上: 572,503 628,503 600,185<br>
+        下: 572,697 628,697 600,1015<br>
+        左: 503,572 503,628 185,600<br>
+        右: 692,572 692,628 893,600
+        </span>
+      </div>
+      <div class="callout blue" style="margin-top:10px">
+        <b>コア —</b> <span class="mono" style="font-size:11px">cx=599.5 cy=599.5 r=75 fill=#E60012</span>
+      </div>
+    </div>
+  </div>
+  <p class="note">Illustrator 再構築時は上記座標を数値入力し、パスファインダーで月を型抜き。スパイクは各々を実測座標で個別作図する。手動トレース・対称ミラー・等長化は禁止。</p>
+</section>
+
+<!-- ============ 07 ============ -->
+<section id="s7">
+  <div class="sec-head"><span class="sec-no">07</span><h2 class="sec-ttl">商標適性レビュー<small>Trademark Readiness Review</small></h2></div>
+  <p class="lead">識別力・記憶性・拡張性・認識性・国際運用性の5軸で評価（各10点）。非対称構成は識別力に寄与する一方、極小再現性をやや下げる。</p>
+
+  <div class="plate reg" style="padding:30px 28px">
+    <span class="cap">PLATE 07 — Trademark Scorecard</span>
+    <div class="score"><span class="lab">識別力 Distinctiveness</span><span class="bar"><i class="hi" style="width:85%"></i></span><span class="val">8.5<s>/10</s></span></div>
+    <div class="score"><span class="lab">記憶性 Memorability</span><span class="bar"><i class="hi" style="width:85%"></i></span><span class="val">8.5<s>/10</s></span></div>
+    <div class="score"><span class="lab">拡張性 Scalability</span><span class="bar"><i style="width:70%"></i></span><span class="val">7.0<s>/10</s></span></div>
+    <div class="score"><span class="lab">認識性 Recognition</span><span class="bar"><i style="width:80%"></i></span><span class="val">8.0<s>/10</s></span></div>
+    <div class="score"><span class="lab">国際運用 Global Usability</span><span class="bar"><i style="width:75%"></i></span><span class="val">7.5<s>/10</s></span></div>
+    <div class="score" style="margin-top:8px;border-top:1px solid var(--line);padding-top:16px"><span class="lab" style="font-weight:700">総合 Overall</span><span class="bar"><i class="hi" style="width:79%"></i></span><span class="val">7.9<s>/10</s></span></div>
+  </div>
+
+  <table>
+    <thead><tr><th>評価軸</th><th class="num">点</th><th>所見</th></tr></thead>
+    <tbody>
+      <tr><td>識別力</td><td class="num">8.5</td><td>非対称な4スパイク＋月＋赤焦点の組合せは独自性が高く、記述的でない。非対称が他社の対称レティクル類と差別化。</td></tr>
+      <tr><td>記憶性</td><td class="num">8.5</td><td>単一の赤焦点が強い記憶アンカー。短い右スパイクが「向き」の手掛かりを与える。</td></tr>
+      <tr><td>拡張性</td><td class="num">7.0</td><td>64px以上で良好。非対称と鋭点は16px未満で崩れ、別版依存が大きい点が減点。</td></tr>
+      <tr><td>認識性</td><td class="num">8.0</td><td>白地・暗地でシルエット明快。赤コアで一目識別。</td></tr>
+      <tr><td>国際運用</td><td class="num">7.5</td><td>幾何中立だが三日月の宗教・国旗連想に地域注意。</td></tr>
+    </tbody>
+  </table>
+  <div class="callout"><b>留意リスク —</b> ①三日月単体は特定宗教・国旗と類似し得る（月単独運用は避ける）。②十字＋円は照準器（スコープ）連想の懸念。③天文・観測カテゴリは図形商標が密集、出願前の類否調査を必須とする。④非対称は固有性だが、登録図面では右スパイクの短さを明記し権利範囲を明確化する。</div>
+</section>
+
+<!-- ============ 08 ============ -->
+<section id="s8">
+  <div class="sec-head"><span class="sec-no">08</span><h2 class="sec-ttl">デザイン監査<small>Design Audit</small></h2></div>
+  <p class="lead">Apple・Nike・Leica・MUJI の規範に照らし、実測どおりの PHOSARA マークの強み・弱み・リスクを評価する。<b>本監査は評価のみで、再設計は行わない。</b></p>
+
+  <table>
+    <caption>表 8.1 — ベンチマーク照合 / Benchmark Audit</caption>
+    <thead><tr><th>基準</th><th>その規範</th><th>PHOSARA の照合所見</th></tr></thead>
+    <tbody>
+      <tr><td><b>Apple</b></td><td>幾何的純度・単一焦点・削ぎ落とし</td><td><span class="tag warn">一部</span> 単一焦点（赤コア）は合致。ただし非対称スパイクと非整数比は Apple 的完全幾何より「有機的」。意図的差別化とも読める。</td></tr>
+      <tr><td><b>Nike</b></td><td>一筆の即時想起・無色でも成立</td><td><span class="tag warn">一部</span> シルエット強度は高いが一描線再現は不可。瞬間想起性ではやや劣る。</td></tr>
+      <tr><td><b>Leica</b></td><td>赤丸の象徴性・精密機器の品位</td><td><span class="tag ok">合致</span> 赤コア＝焦点は Leica レッドドットに通じる精密・観測の品位（※類似連想に注意）。</td></tr>
+      <tr><td><b>MUJI</b></td><td>静謐・余白・無装飾</td><td><span class="tag ok">合致</span> 無装飾の幾何と十分な余白は MUJI 的静けさに親和。2色厳守が支える。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols" style="margin-top:8px">
+    <div>
+      <div class="kicker">強み Strengths</div>
+      <ul class="clean">
+        <li>赤コアという唯一の焦点が強い記憶アンカーと階層を生む。</li>
+        <li>非対称な右スパイクが「向き／観測の方向性」を示唆し固有性を高める。</li>
+        <li>無色・暗地・明地のいずれでも成立するシルエット強度。</li>
+        <li>「観測・光・焦点」という概念を装飾なしで体現。</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">弱み Weaknesses</div>
+      <ul class="clean">
+        <li>非対称＋鋭点のため極小（&lt;24px）で形状が崩れ、別版管理が必須。</li>
+        <li>Nike 的「一描線の即時想起」には届かない。</li>
+        <li>スパイクの長短差・ハロー再現は製版精度に品質が左右される。</li>
+      </ul>
+      <div class="kicker">リスク Risks</div>
+      <ul class="clean">
+        <li>照準器（スコープ）連想による文脈誤読。</li>
+        <li>三日月の宗教・国旗連想、Leica レッドドットとの近接連想。</li>
+        <li>非対称が再現ミス（対称化）を誘発しやすい運用リスク。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><b>総評 —</b> 実測に基づく PHOSARA は、Leica／MUJI の規範に高く合致する概念純度の高いマークである。固有の<b>非対称</b>は識別力上の資産であると同時に、極小再現と「対称化されやすい」運用上の弱点でもある。対処は設計変更ではなく、<b>実測準拠の厳格な運用ガイドライン</b>（別版管理・非対称の保全・文脈管理）に依る。</div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">PHOSARA — LOGO CONSTRUCTION GRID v2.0 / CG-2026-02</span>
+    <span><span class="xhair"></span> 承認原版・実測準拠／v1.0を破棄・代替／機密</span>
+    <span class="mono">© PHOSARA. ALL RIGHTS RESERVED.</span>
+  </div>
+</footer>
+
+</body>
+</html>
