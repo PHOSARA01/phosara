@@ -1,0 +1,176 @@
+/* ============================================================
+   layout.css
+   Design System v2.0 Section 05 / 06 / 10 参照
+============================================================ */
+
+/* ---- コンテナ -------------------------------------------- */
+.container {
+  max-width:     var(--container-max);
+  margin-left:   auto;
+  margin-right:  auto;
+  padding-left:  var(--space-4);
+  padding-right: var(--space-4);
+}
+@media (min-width: 768px) {
+  .container {
+    padding-left:  var(--space-6);
+    padding-right: var(--space-6);
+  }
+}
+
+/* ---- セクション ------------------------------------------ */
+.section {
+  padding-top:    var(--space-16);
+  padding-bottom: var(--space-16);
+}
+@media (min-width: 768px) {
+  .section {
+    padding-top:    var(--space-24);
+    padding-bottom: var(--space-24);
+  }
+}
+@media (min-width: 1024px) {
+  .section {
+    padding-top:    var(--space-32);
+    padding-bottom: var(--space-32);
+  }
+}
+
+/* ---- スキップリンク -------------------------------------- */
+.skip-link {
+  position:   absolute;
+  top:        -100%;
+  left:       var(--space-4);
+  padding:    var(--space-2) var(--space-4);
+  background: var(--color-text);
+  color:      #FFFFFF;
+  font-size:  var(--text-sm);
+  z-index:    9999;
+  transition: top var(--duration-fast) var(--ease-out);
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ---- グローバルヘッダー ---------------------------------- */
+.global-header {
+  position:         sticky;
+  top:              0;
+  z-index:          100;
+  background-color: var(--color-surface);
+  border-bottom:    1px solid var(--color-border);
+  padding:          0 var(--container-padding);
+}
+.global-header-inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  max-width:       var(--container-max);
+  margin:          0 auto;
+  height:          64px;
+}
+
+/* ---- サイトロゴ ------------------------------------------ */
+.site-logo {
+  display:     flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---- グローバルナビ -------------------------------------- */
+.global-nav {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .global-nav {
+    display: block;
+  }
+}
+
+/* ---- ナビリスト ------------------------------------------ */
+.nav-list {
+  display: flex;
+  gap:     var(--space-8);
+}
+
+/* ---- ナビリンク ------------------------------------------ */
+.nav-link {
+  font-size:       var(--text-sm);
+  font-weight:     var(--weight-semibold);
+  color:           var(--color-text-sub);
+  text-decoration: none;
+  letter-spacing:  0.05em;
+  transition:      color var(--duration-fast) var(--ease-out);
+}
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--color-text);
+}
+
+/* ---- ナビ CTA ------------------------------------------- */
+.nav-cta {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .nav-cta {
+    display: inline-flex;
+  }
+}
+
+/* ---- ハンバーガーボタン ---------------------------------- */
+.nav-toggle {
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  gap:             5px;
+  width:           44px;
+  height:          44px;
+  padding:         var(--space-2);
+}
+@media (min-width: 1024px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* ---- ハンバーガーの線（nav-toggle とは別定義） ----------- */
+.nav-toggle-bar {
+  display:          block;
+  width:            100%;
+  height:           2px;
+  background-color: var(--color-text);
+  transition:       opacity   var(--duration-fast) var(--ease-out),
+                    transform var(--duration-fast) var(--ease-out);
+}
+
+/* ---- モバイルメニュー ------------------------------------ */
+.mobile-menu {
+  background-color: var(--color-surface);
+  border-top:       1px solid var(--color-border);
+  padding:          var(--space-6) var(--space-4);
+}
+.mobile-menu .nav-list {
+  flex-direction: column;
+  gap:            var(--space-4);
+}
+.mobile-menu .nav-link {
+  font-size: var(--text-base);
+}
+
+/* ---- グローバルフッター ---------------------------------- */
+.global-footer {
+  background-color: var(--color-surface);
+  border-top:       1px solid var(--color-border);
+  padding:          var(--space-12) 0;
+}
+.global-footer-inner {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  flex-wrap:       wrap;
+  gap:             var(--space-4);
+}
+.footer-copy {
+  font-size: var(--text-sm);
+  color:     var(--color-text-muted);
+}

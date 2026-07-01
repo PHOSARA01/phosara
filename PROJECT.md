@@ -2,11 +2,9 @@
 
 PHOSARAプロジェクトの現在状況・進捗・次のアクションを管理するドキュメントです。
 
-このファイルはオーナーとAIエージェントが「今どこにいるか」を
-即座に把握するための「現在地図」です。
-作業が進むたびに更新してください。
+このファイルはオーナーとAIエージェントが「今どこにいるか」を即座に把握するための「現在地図」です。作業が進むたびに更新してください。
 
-**最終更新：2026-06-30**
+**最終更新：2026-07-01**
 
 ---
 
@@ -23,13 +21,9 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 
 ## 現在のフェーズ
 
-```
-Phase 2 後半：設計資料最終確定 ＋ AIエージェント運用整備
-```
+**Phase 3 進行中：公式サイト実装（HTML・CSS・JavaScript）**
 
-GitHubリポジトリ基盤は完成。
-設計資料（Design System v2・Technical Guide v2・Operations Guide v2）の
-最終アップロードとAIエージェント運用基盤の整備が進行中。
+`website/` のベース実装（HTML・CSS・JavaScript）が完了。コミット・GitHub Push 待ち。
 
 ---
 
@@ -38,8 +32,8 @@ GitHubリポジトリ基盤は完成。
 | フェーズ | 内容 | 状態 |
 |---|---|---|
 | Phase 1 | GitHubリポジトリ基盤整備 | 完了 |
-| Phase 2 | 設計資料最終確定・AIエージェント運用整備 | 進行中 |
-| Phase 3 | 公式サイト実装（HTML・CSS・JavaScript） | 未着手 |
+| Phase 2 | 設計資料最終確定・AIエージェント運用整備 | 完了 |
+| Phase 3 | 公式サイト実装（HTML・CSS・JavaScript） | 進行中 |
 | Phase 4 | 公開・本番リリース | 未着手 |
 | Phase 5 | 運用・改善・Agent Swarm拡張 | 未着手 |
 
@@ -69,21 +63,35 @@ GitHubリポジトリ基盤は完成。
 - [x] Website Blueprint v1.1
 - [x] Website Copy v1.1
 - [x] Website Development Guide v1.0
+- [x] Website Design System v2.0（コミット済み：c0aaee3）
+- [x] Website Technical Guide v2.0（コミット済み：58ddd0f）
+
+### website/ 実装（Phase 3）
+
+- [x] `website/` ディレクトリ構成の構築
+- [x] `vercel.json` 作成
+- [x] `website/assets/css/tokens.css` 作成
+- [x] `website/assets/css/base.css` 作成
+- [x] `website/assets/css/layout.css` 作成
+- [x] `website/assets/css/components.css` 作成
+- [x] `website/assets/js/main.js` 作成
+- [x] `website/assets/js/nav.js` 作成
+- [x] `website/assets/js/animations.js` 作成
+- [x] `website/index.html` 作成
+- [x] `scripts/css-check.sh` 作成
 
 ---
 
 ## 進行中タスク
 
-- [ ] Website Design System v2.0 の最終確定・アップロード
-- [ ] Website Technical Guide v2.0 の最終確定・アップロード
-- [ ] Website Operations Guide v2.0 の最終確定・アップロード
+- [ ] `website/` 実装のコミット・GitHub Push
 
 ---
 
 ## 保留中タスク
 
-- [ ] `AGENTS.md` の作成
-  - 理由：Cursor・Codexなど複数AIエージェント導入時に作成する
+- [ ] Website Operations Guide v2.0 の作成（未作成・保留中）
+- [ ] `AGENTS.md` の作成（将来対応：複数AIエージェント導入時に作成）
 
 ---
 
@@ -91,12 +99,14 @@ GitHubリポジトリ基盤は完成。
 
 | 優先度 | タスク | 備考 |
 |---|---|---|
-| 1 | `PROJECT.md` 作成 | このファイル・承認後に作成 |
-| 2 | Website Design System v2.0 アップロード | 実装前に必要 |
-| 3 | Website Technical Guide v2.0 アップロード | 実装前に必要 |
-| 4 | Website Operations Guide v2.0 アップロード | 実装前に必要 |
-| 5 | 公式サイト実装開始（Phase 3 着手） | 上記完了後 |
-| 6 | `AGENTS.md` 作成（将来） | 複数AI導入のタイミングで対応 |
+| 1 | `website/` 実装コミット・Push | 統合レビュー完了済み |
+| 2 | カラートークン確定（【確認A】） | `tokens.css` のHEX値を記入 |
+| 3 | フォント確定（【確認B】） | `tokens.css` のフォント名を記入 |
+| 4 | `favicon.ico` / `apple-touch-icon.png` 作成 | 【確認A】確定後に作成 |
+| 5 | ナビに APPROACH / INDUSTRIES を追加 | 対応ページ作成と同時に対応 |
+| 6 | about / approach / services / industries ページ実装 | Phase 3 後半 |
+| 7 | `sitemap.xml` / `robots.txt` 作成 | Phase 4 直前 |
+| 8 | `AGENTS.md` 作成（将来） | 複数AI導入のタイミングで対応 |
 
 ---
 
@@ -109,48 +119,48 @@ GitHubリポジトリ基盤は完成。
 | `docs/02_コンサルティング/` | 完了 | 全資料アップロード済み |
 | `docs/03_業界別ソリューション/` | 完了 | 4業界分アップロード済み |
 | `docs/04_ケースブック/` | 完了 | Blueprint・Template済み |
-| `docs/05_デザインシステム/` | 進行中 | Design System v2・Technical Guide v2・Operations Guide v2 が未アップロード |
+| `docs/05_デザインシステム/` | 完了 | Design System v2.0・Technical Guide v2.0 コミット済み |
 | `docs/90_アーカイブ/` | 完了 | 旧資料整理済み |
-| `website/` | 未着手 | Phase 3 で実装開始 |
-| `scripts/` | 未着手 | Phase 4〜5 で自動化追加 |
+| `website/` | 進行中 | ベース実装完了・コミット待ち |
+| `scripts/` | 進行中 | `css-check.sh` 作成済み |
 
 ---
 
 ## 設計資料の整備状況
 
-Website実装に必要な5冊の正式資料の状態です。
-
 | 資料 | バージョン | 状態 |
 |---|---|---|
-| Website Blueprint | v1.1 | 完了・アップロード済み |
-| Website Copy | v1.1 | 完了・アップロード済み |
-| Website Design System | v2.0 | 未アップロード（最終確定待ち） |
-| Website Technical Guide | v2.0 | 未アップロード（最終確定待ち） |
-| Website Operations Guide | v2.0 | 未アップロード（最終確定待ち） |
+| Website Blueprint | v1.1 | 完了・コミット済み |
+| Website Copy | v1.1 | 完了・コミット済み |
+| Website Design System | v2.0 | 完了・コミット済み（c0aaee3） |
+| Website Technical Guide | v2.0 | 完了・コミット済み（58ddd0f） |
+| Website Operations Guide | v2.0 | 未作成（保留中） |
 
 ---
 
 ## 直近のコミット履歴
 
-```
-f4ac845  docs: add CLAUDE.md and fix gitignore
-78792fb  Initial commit
-```
+    58ddd0f  docs: add PHOSARA Website Technical Guide v2.0
+    c0aaee3  docs: add PHOSARA Website Design System v2.0
+    800b399  docs: finalize PHOSARA Visual System v2.0
+    96b38fc  docs: add PROJECT.md
+    f4ac845  docs: add CLAUDE.md and fix gitignore
+    78792fb  Initial commit
 
 ---
 
 ## 現在の目標
 
-### 短期目標（Phase 2 完了まで）
+### 短期目標（Phase 3 完了まで）
 
-- 設計資料5冊の最終確定・GitHubへのアップロード完了
-- `PROJECT.md` の運用開始
-- AIエージェント（Claude Code）による作業フローの安定化
+- `website/` 実装のコミット・GitHub Push
+- カラートークン・フォントの確定（【確認A】・【確認B】）
+- About / Approach / Services / Industries ページの実装
 
-### 中期目標（Phase 3〜4）
+### 中期目標（Phase 4）
 
-- PHOSARA公式サイトの実装・本番リリース
-- Blueprint・Copy・Design Systemに完全準拠したサイトの公開
+- PHOSARA公式サイトの本番リリース
+- Blueprint・Copy・Design System に完全準拠したサイトの公開
 - 問い合わせ導線（無料相談 → Business Audit）の稼働
 
 ### 長期目標（Phase 5 以降）
@@ -163,7 +173,7 @@ f4ac845  docs: add CLAUDE.md and fix gitignore
 
 ## 更新ルール
 
-- 作業完了時：完了タスクを `- [ ]` から `- [x]` に変更する
+- 作業完了時：完了タスクを `[ ]` から `[x]` に変更する
 - 新タスク発生時：優先度をつけて「次にやるべきこと」に追記する
 - フェーズ移行時：「現在のフェーズ」を更新する
 - コミットメッセージ：`chore: update PROJECT.md`
@@ -174,5 +184,6 @@ f4ac845  docs: add CLAUDE.md and fix gitignore
 ## 備考・メモ
 
 - `docs/90_アーカイブ/` の資料は廃止済みのため参照・使用禁止
-- `website/` と `scripts/` は現在空（Phase 3 以降で使用）
+- カラートークン（【確認A】）・フォント（【確認B】）・アイコン（【確認C】）はオーナー確定待ち
+- `favicon.ico` / `apple-touch-icon.png` はリンクタグのみ追加済み、実ファイルは【確認A】確定後に作成
 - `AGENTS.md` は複数AIエージェント導入時に作成予定（現在保留）

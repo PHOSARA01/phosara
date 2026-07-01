@@ -1,0 +1,72 @@
+/* ============================================================
+   base.css — リセット・基本スタイル
+   Technical Guide v2.0 Section 05 参照
+============================================================ */
+
+/* ---- リセット ------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+/* ---- html・body ----------------------------------------- */
+html {
+  font-size:       16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color:        var(--color-bg);
+  color:                   var(--color-text);
+  font-family:             var(--font-jp);
+  font-size:               var(--text-base);
+  line-height:             var(--leading-body);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- メディア要素 ---------------------------------------- */
+img,
+video {
+  max-width: 100%;
+  height:    auto;
+  display:   block;
+}
+
+/* ---- リスト --------------------------------------------- */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ---- リンク --------------------------------------------- */
+a {
+  color:           inherit;
+  text-decoration: none;
+}
+
+/* ---- ボタン --------------------------------------------- */
+button {
+  background: none;
+  border:     none;
+  cursor:     pointer;
+  font:       inherit;
+}
+
+/* ---- フォーカスリング（アクセシビリティ必須） --------------- */
+/* Design System v2.0 Section 16 参照                       */
+:focus-visible {
+  outline:        2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+/* ---- prefers-reduced-motion ----------------------------- */
+/* Design System v2.0 Section 14 参照                       */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+  }
+}
