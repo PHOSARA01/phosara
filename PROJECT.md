@@ -4,7 +4,7 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 
 このファイルはオーナーとAIエージェントが「今どこにいるか」を即座に把握するための「現在地図」です。作業が進むたびに更新してください。
 
-**最終更新：2026-07-01**
+**最終更新：2026-07-02**
 
 ---
 
@@ -65,6 +65,7 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 - [x] Website Development Guide v1.0
 - [x] Website Design System v2.0（コミット済み：c0aaee3）
 - [x] Website Technical Guide v2.0（コミット済み：58ddd0f）
+- [x] PBOS Gold Edition（`docs/08_PBOS/`）
 
 ### website/ 実装（Phase 3）
 
@@ -107,6 +108,8 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 | 6 | about / approach / services / industries ページ実装 | Phase 3 後半 |
 | 7 | `sitemap.xml` / `robots.txt` 作成 | Phase 4 直前 |
 | 8 | `AGENTS.md` 作成（将来） | 複数AI導入のタイミングで対応 |
+| 9 | クライアント・ゼロ計画の実行 | PBOS Gold Edition 完成を受けて着手 |
+| 10 | Automation Master Plan の策定（Fable 5 候補） | `docs/09_Automation/` に配置予定 |
 
 ---
 
@@ -120,6 +123,9 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 | `docs/03_業界別ソリューション/` | 完了 | 4業界分アップロード済み |
 | `docs/04_ケースブック/` | 完了 | Blueprint・Template済み |
 | `docs/05_デザインシステム/` | 完了 | Design System v2.0・Technical Guide v2.0 コミット済み |
+| `docs/08_PBOS/` | 完了 | PBOS Gold Edition 配置済み |
+| `docs/09_Automation/` | 未着手 | Automation Master Plan（予定） |
+| `docs/10_AI_Company/` | 未着手 | AI Company 設計資料（予定） |
 | `docs/90_アーカイブ/` | 完了 | 旧資料整理済み |
 | `website/` | 進行中 | ベース実装完了・コミット待ち |
 | `scripts/` | 進行中 | `css-check.sh` 作成済み |
@@ -187,3 +193,5 @@ PHOSARAプロジェクトの現在状況・進捗・次のアクションを管�
 - カラートークン（【確認A】）・フォント（【確認B】）・アイコン（【確認C】）はオーナー確定待ち
 - `favicon.ico` / `apple-touch-icon.png` はリンクタグのみ追加済み、実ファイルは【確認A】確定後に作成
 - `AGENTS.md` は複数AIエージェント導入時に作成予定（現在保留）
+- `docs/` 将来構成：`08_PBOS/` / `09_Automation/` / `10_AI_Company/`
+- Fable 5 次回候補：Automation Master Plan（`docs/09_Automation/` に配置予定）
