@@ -77,6 +77,22 @@
   flex-shrink: 0;
 }
 
+/* ---- ロゴアセット ---------------------------------------- */
+.site-logo__asset {
+  display:     block;
+  line-height: 0;
+  transition:  opacity var(--duration-fast) var(--ease-out);
+}
+.site-logo__asset img {
+  display:   block;
+  width:     auto;
+  height:    auto;
+  max-width: 100%;
+}
+.site-logo:hover .site-logo__asset {
+  opacity: 0.75;
+}
+
 /* ---- グローバルナビ -------------------------------------- */
 .global-nav {
   display: none;
