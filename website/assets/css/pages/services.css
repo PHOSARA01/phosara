@@ -1,0 +1,124 @@
+/* ============================================================
+   pages/services.css
+   /services/ ページ固有スタイル
+   Design System v2.0 参照
+============================================================ */
+
+/* ---- セクション本文 -------------------------------------- */
+.section-body {
+  font-size:     var(--text-base);
+  color:         var(--color-text-sub);
+  line-height:   var(--leading-body);
+  margin-bottom: var(--space-4);
+  max-width:     720px;
+}
+.section-body:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- セクション背景バリアント（Design Consulting） -------- */
+.section--alt {
+  background-color: var(--color-surface);
+}
+
+/* ---- サービス・ブロック ---------------------------------- */
+/* Business Audit / Design Consulting 用の大型ブロック */
+.service-block {
+  max-width: 720px;
+}
+
+.service-block__label {
+  margin-bottom: var(--space-4);
+}
+
+.service-block__title {
+  font-size:     var(--text-h2);
+  font-weight:   var(--weight-bold);
+  color:         var(--color-text);
+  line-height:   var(--leading-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+.service-block__body {
+  font-size:     var(--text-lg);
+  color:         var(--color-text-sub);
+  line-height:   var(--leading-body);
+  margin-bottom: var(--space-10);
+}
+
+.service-block__cta {
+  display:     flex;
+  gap:         var(--space-4);
+  align-items: center;
+  flex-wrap:   wrap;
+}
+
+/* ---- サービス・ブロック：フィーチャー（Business Audit） -- */
+/* アクセントカラーのボーダーで有償ステップを強調 */
+.service-block--featured {
+  border-left:  3px solid var(--color-accent);
+  padding-left: var(--space-8);
+}
+
+/* ---- カード内テキスト ------------------------------------ */
+/* .solutions-grid 内の .card に適用するタイトル・本文 */
+.card-title {
+  font-size:     var(--text-h3);
+  font-weight:   var(--weight-bold);
+  color:         var(--color-text);
+  line-height:   var(--leading-heading);
+  margin-bottom: var(--space-3);
+}
+
+.card-body {
+  font-size:     var(--text-base);
+  color:         var(--color-text-sub);
+  line-height:   var(--leading-body);
+  margin-bottom: var(--space-6);
+}
+
+/* ---- ソリューション・グリッド ---------------------------- */
+.solutions-grid {
+  list-style: none;
+  padding:    0;
+  margin:     0;
+  display:    grid;
+  grid-template-columns: 1fr;
+  gap:        var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .solutions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* カードをグリッド内で縦方向に揃える */
+.solutions-grid .card {
+  height:          100%;
+  display:         flex;
+  flex-direction:  column;
+  justify-content: space-between;
+}
+
+/* ---- モバイル対応 ---------------------------------------- */
+@media (max-width: 767px) {
+  .service-block--featured {
+    padding-left: var(--space-6);
+  }
+
+  .service-block__title {
+    font-size: var(--text-h3);
+  }
+
+  .service-block__body {
+    font-size: var(--text-base);
+  }
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PHOSARAはBusiness AuditとDesign Consultingを起点に、Website・Branding・Portfolio・Communication・AI活用など最適なソリューションを設計します。">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://phosara.com/services/">
+  <meta property="og:title"       content="サービス｜Business Auditから導くソリューション｜PHOSARA">
+  <meta property="og:description" content="PHOSARAはBusiness AuditとDesign Consultingを起点に、Website・Branding・Portfolio・Communication・AI活用など最適なソリューションを設計します。">
+  <meta property="og:image"       content="/assets/images/og/og-image.jpg">
+  <meta name="twitter:card"       content="summary_large_image">
+  <title>サービス｜Business Auditから導くソリューション｜PHOSARA</title>
+  <link rel="canonical"  href="https://phosara.com/services/">
+  <link rel="icon"             href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Space+Grotesk:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/pages/services.css">
+</head>
+<body>
+
+<!-- ========================================
+  Skip Link
+  キーボードユーザー向けアクセシビリティ対応
+======================================== -->
+<a href="#main" class="skip-link">メインコンテンツへスキップ</a>
+
+<!-- ========================================
+  Global Header
+  Blueprint Section 02 参照
+======================================== -->
+<header class="global-header" role="banner">
+  <div class="global-header-inner">
+
+    <!-- サイトロゴ -->
+    <a href="/" class="site-logo" aria-label="PHOSARA ホームへ">
+      <span class="site-logo__asset">
+        <img
+          src="/assets/images/logos/phosara-logo.svg"
+          alt="PHOSARA"
+          width="120"
+          height="32"
+          decoding="async"
+          loading="eager"
+        >
+      </span>
+    </a>
+
+    <!-- PCナビゲーション（1024px以上で表示） -->
+    <nav class="global-nav" aria-label="グローバルナビゲーション">
+      <ul class="nav-list" role="list">
+        <li><a href="/#about"    class="nav-link">About</a></li>
+        <li><a href="/#services" class="nav-link">Services</a></li>
+        <li><a href="/#works"    class="nav-link">Works</a></li>
+        <li><a href="/#journal"  class="nav-link">Journal</a></li>
+      </ul>
+    </nav>
+
+    <!-- 相談CTAリンク（PCのみ） -->
+    <a href="/#contact" class="nav-cta btn-primary">無料相談</a>
+
+    <!-- ハンバーガーボタン（モバイルのみ） -->
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- ========================================
+  Mobile Menu
+  JS（nav.js）で aria-hidden / hidden を切り替え
+======================================== -->
+<div id="mobile-menu" class="mobile-menu" hidden aria-hidden="true">
+  <nav aria-label="モバイルナビゲーション">
+    <ul class="nav-list" role="list">
+      <li><a href="/#about"    class="nav-link">About</a></li>
+      <li><a href="/#services" class="nav-link">Services</a></li>
+      <li><a href="/#works"    class="nav-link">Works</a></li>
+      <li><a href="/#journal"  class="nav-link">Journal</a></li>
+      <li><a href="/#contact"  class="nav-link">無料相談</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- ========================================
+  Main Content
+======================================== -->
+<main id="main">
+
+  <!-- ======================================
+    Hero Section
+    Copy v1.1 04 SERVICES > 02 Hero 参照
+  ====================================== -->
+  <section class="hero" id="hero" aria-label="ヒーロー">
+    <div class="container">
+      <div class="hero-inner">
+        <h1 class="hero-title">必要なのは、制作ではなく最適な解決策。</h1>
+        <p class="hero-lead">PHOSARAは、Business AuditとDesign Consultingを通じて課題を整理し、その結果として必要なソリューションを設計します。</p>
+        <div class="hero-cta">
+          <a href="/#contact" class="btn-primary btn--lg">無料相談を予約する</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll__line"></span>
+    </div>
+  </section>
+
+  <!-- ======================================
+    Business Audit
+    Copy v1.1 04 SERVICES > 03 Business Audit 参照
+    最初の有償ステップとして前面に配置
+  ====================================== -->
+  <section class="section" id="business-audit" aria-labelledby="ba-heading">
+    <div class="container">
+      <div class="service-block service-block--featured">
+        <div class="service-block__label">
+          <span class="badge">最初の有償ステップ</span>
+        </div>
+        <h2 class="service-block__title" id="ba-heading">Business Audit</h2>
+        <p class="service-block__body">事業・市場・顧客・ブランドを整理し、改善の優先順位を明確にします。</p>
+        <div class="service-block__cta">
+          <a href="/#contact" class="btn-primary btn--lg">相談してみる</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+    Design Consulting
+    Copy v1.1 04 SERVICES > 04 Design Consulting 参照
+  ====================================== -->
+  <section class="section section--alt" id="design-consulting" aria-labelledby="dc-heading">
+    <div class="container">
+      <div class="service-block">
+        <h2 class="service-block__title" id="dc-heading">Design Consulting</h2>
+        <p class="service-block__body">診断結果をもとに、実行すべき施策とクリエイティブの方向性を設計します。</p>
+        <div class="service-block__cta">
+          <a href="/#contact" class="btn-secondary btn--lg">詳細を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+    ソリューション（Website / Branding / Portfolio / Communication / AI）
+    Copy v1.1 04 SERVICES > 05〜09 参照
+  ====================================== -->
+  <section class="section" id="solutions" aria-labelledby="solutions-heading">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="section-heading-title" id="solutions-heading">ソリューション</h2>
+      </div>
+      <ul class="solutions-grid" role="list">
+
+        <!-- Website -->
+        <li>
+          <article class="card">
+            <h3 class="card-title">Website</h3>
+            <p class="card-body">Webサイトを制作するのではなく、事業成果につながる情報設計と導線を構築します。</p>
+            <a href="/#contact" class="btn-text">相談してみる</a>
+          </article>
+        </li>
+
+        <!-- Branding -->
+        <li>
+          <article class="card">
+            <h3 class="card-title">Branding</h3>
+            <p class="card-body">ブランドの価値・一貫性・伝達方法を整理し、信頼されるブランド体験を設計します。</p>
+            <a href="/#contact" class="btn-text">相談してみる</a>
+          </article>
+        </li>
+
+        <!-- Portfolio -->
+        <li>
+          <article class="card">
+            <h3 class="card-title">Portfolio</h3>
+            <p class="card-body">実績を並べるのではなく、価値が伝わるポートフォリオを設計します。</p>
+            <a href="/#contact" class="btn-text">相談してみる</a>
+          </article>
+        </li>
+
+        <!-- Communication -->
+        <li>
+          <article class="card">
+            <h3 class="card-title">Communication</h3>
+            <p class="card-body">Web・SNS・印刷物など複数の接点で一貫したコミュニケーションを実現します。</p>
+            <a href="/#contact" class="btn-text">相談してみる</a>
+          </article>
+        </li>
+
+        <!-- AI -->
+        <li>
+          <article class="card">
+            <h3 class="card-title">AI</h3>
+            <p class="card-body">AIを活用した制作・業務改善・情報発信を支援し、継続的な価値向上を目指します。</p>
+            <a href="/#contact" class="btn-text">相談してみる</a>
+          </article>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================
+    Contact CTA
+    Copy v1.1 04 SERVICES > 10 Contact CTA 参照
+  ====================================== -->
+  <section class="cta-section" id="cta" aria-labelledby="cta-heading">
+    <div class="cta-section-inner">
+      <h2 class="cta-section-title" id="cta-heading">どのソリューションが必要か、一緒に整理しましょう。</h2>
+      <a href="/#contact" class="btn-primary btn--lg">無料相談を予約する</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ========================================
+  Global Footer
+  Blueprint Section 09 参照
+======================================== -->
+<footer class="global-footer" role="contentinfo">
+  <div class="container">
+    <div class="global-footer-inner">
+      <a href="/" class="site-logo" aria-label="PHOSARA ホームへ">
+        <span class="site-logo__asset">
+          <img
+            src="/assets/images/logos/phosara-logo.svg"
+            alt="PHOSARA"
+            width="100"
+            height="27"
+            decoding="async"
+          >
+        </span>
+      </a>
+      <small class="footer-copy">&copy; 2026 PHOSARA. All rights reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript — body終了タグ直前に配置 / defer で非同期読み込み -->
+<script src="/assets/js/main.js"       defer></script>
+<script src="/assets/js/nav.js"        defer></script>
+<script src="/assets/js/animations.js" defer></script>
+
+</body>
+</html>
