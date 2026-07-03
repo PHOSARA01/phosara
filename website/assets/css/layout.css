@@ -173,6 +173,139 @@
   font-size: var(--text-base);
 }
 
+/* ---- ヒーロー -------------------------------------------- */
+.hero {
+  position:       relative;
+  isolation:      isolate;
+  overflow:       hidden;
+  min-height:     calc(100vh - 64px);  /* sticky ヘッダー(64px)分を除いた全面表示 */
+  display:        flex;
+  align-items:    center;
+  padding-top:    var(--space-12);
+  padding-bottom: var(--space-12);
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 65%, rgba(198, 31, 31, 0.10) 0%, transparent 65%),
+    var(--color-bg);
+}
+.hero-inner {
+  max-width: 720px;
+}
+.hero-title {
+  font-size:      var(--text-h1);
+  font-weight:    var(--weight-bold);
+  line-height:    1.2;
+  letter-spacing: -0.02em;
+  color:          var(--color-text);
+  margin-bottom:  var(--space-8);
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;  /* 約64px */
+  }
+}
+.hero-lead {
+  font-size:     var(--text-lg);
+  line-height:   var(--leading-body);
+  color:         var(--color-text-sub);
+  margin-bottom: var(--space-3);
+}
+.hero-body {
+  font-size:     var(--text-base);
+  line-height:   var(--leading-body);
+  color:         var(--color-text-sub);
+  margin-bottom: var(--space-3);
+}
+.hero-closing {
+  font-size:     var(--text-base);
+  font-weight:   var(--weight-semibold);
+  line-height:   var(--leading-body);
+  color:         var(--color-text);
+  margin-bottom: var(--space-12);
+}
+.hero-cta {
+  display:        flex;
+  flex-direction: column;
+  align-items:    stretch;
+  gap:            var(--space-4);
+}
+@media (min-width: 768px) {
+  .hero-cta {
+    flex-direction: row;
+    align-items:    center;
+  }
+}
+
+/* ヒーロー：微細な光（右上から差し込む副光源） */
+.hero::before {
+  content:        '';
+  position:       absolute;
+  top:            -30%;
+  right:          -20%;
+  width:          60%;
+  height:         80%;
+  background:     radial-gradient(ellipse, rgba(198, 31, 31, 0.05) 0%, transparent 60%);
+  z-index:        -1;
+  pointer-events: none;
+}
+/* ヒーロー：ノイズテクスチャ（高級感のある粒状感） */
+.hero::after {
+  content:           '';
+  position:          absolute;
+  inset:             0;
+  background-image:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size:   300px 300px;
+  opacity:           0.035;
+  z-index:           -1;
+  pointer-events:    none;
+}
+
+/* ---- スクロールインジケーター ----------------------------- */
+.hero-scroll {
+  position:       absolute;
+  bottom:         var(--space-8);
+  left:           50%;
+  transform:      translateX(-50%);
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  z-index:        1;
+}
+
+.hero-scroll__line {
+  width:      1px;
+  height:     56px;
+  background: linear-gradient(to bottom, var(--color-border-strong), transparent);
+  animation:  hero-scroll-draw 2.2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-draw {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  15%  { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  65%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll__line { animation: none; opacity: 0.3; }
+}
+
+/* ---- セクション余白調整 ---------------------------------- */
+#hero + .section {
+  padding-top: var(--space-20);
+}
+
+@media (min-width: 1024px) {
+  #hero + .section {
+    padding-top: var(--space-32);
+  }
+}
+
 /* ---- グローバルフッター ---------------------------------- */
 .global-footer {
   background-color: var(--color-surface);
