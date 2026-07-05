@@ -56,6 +56,19 @@ Website・Branding・Portfolio・Communicationの最適なSolutionを設計す�
 ## ディレクトリ構成
 
 ```
+company/               PHOSARA HQ 正典資産（経営・実行OS）← company/INDEX.md 参照
+  00_constitution/     Constitution プレースホルダー（内容は 01_hq-core/ 内）
+  01_hq-core/          HQ Core v1.0（全資産の根拠・最高優先）
+  02_company-os/       Company OS v2.0 + STATE / WORKFLOW / AGENTS / SKILLS / VERIFICATION
+  03_pbos/             PBOS（docs/08_PBOS/ とのコピー）
+  04_revenue-agent/    60-Day Revenue Agent
+  05_audit-kit/        Business Audit Kit v1.0（16ファイル）
+  06_pricing/          Pricing Governance v1.0
+  07_contracts/        Contract System v1.0
+  08_execution-os/     Automation & Execution OS v1.0
+  09_client-zero/      Client Zero 実行システム（最新: v1_0_1）
+  99_archive/          廃止版（参照・使用禁止）
+
 docs/                  公式資料
   00_ブランド基盤/      ブランド基盤資料
   01_営業/             営業資料
@@ -63,6 +76,7 @@ docs/                  公式資料
   03_業界別ソリューション/
   04_ケースブック/
   05_デザインシステム/  Webサイト設計書（最重要）
+  08_PBOS/             PHOSARA PBOS（正規の場所）
   90_アーカイブ/        廃止資料（参照・使用禁止）
 
 website/               公式サイト実装ディレクトリ
@@ -221,6 +235,31 @@ fix: correct navigation label
 
 ---
 
+## PHOSARA HQ 資産（company/ ディレクトリ）
+
+AIエージェントが PHOSARA の経営・実行資産を参照する際のルール。
+
+### 参照優先順位
+
+| 優先 | パス | 内容 |
+|------|------|------|
+| 最高 | `company/01_hq-core/` | HQ Core — 全判断の根拠 |
+| 高 | `company/02_company-os/` | Company OS v2.0 + 実行ファイル群 |
+| 高 | `company/05_audit-kit/` | Business Audit Kit v1.0 |
+| 中 | `company/08_execution-os/` | Automation & Execution OS |
+| 中 | `company/09_client-zero/` | Client Zero 実行システム |
+| 参照 | `company/INDEX.md` | 全資産の索引（最初に確認） |
+
+### ルール
+
+- 資産の**改変は必ずオーナーの承認を得てから**行うこと
+- `company/99_archive/` は廃止版。**参照・使用禁止**
+- `company/00_constitution/` は Constitution 独立化のプレースホルダー。現在の内容は `company/01_hq-core/PHOSARA_HQ_CORE_v1_0.md` を参照
+- PBOS の正規の場所は `docs/08_PBOS/PHOSARA_PBOS_Gold_Edition.md`。`company/03_pbos/` はコピー
+- Client Zero の**最新版**は `company/09_client-zero/PHOSARA_CLIENT_ZERO_EXECUTION_v1_0_1.md`
+
+---
+
 ## アーカイブルール
 
 - 統合・廃止された資料は削除せず `docs/90_アーカイブ/` へ移動する
@@ -232,10 +271,20 @@ fix: correct navigation label
 ## 現在のフェーズ
 
 ```
-Phase: 公式サイト実装準備
-優先作業:
-  1. GitHubリポジトリ構成の整備
-  2. 設計資料の最終確定
-  3. CLAUDE.md整備・AIエージェント接続
-  4. 公式サイト実装開始
+Phase: 公式サイト実装中 + PHOSARA HQ 基盤構築完了
+完了済み:
+  ✓ GitHubリポジトリ構成の整備
+  ✓ CLAUDE.md整備・AIエージェント接続
+  ✓ company/ ディレクトリ — HQ 正典資産の保存・構造化
+  ✓ website/index.html — トップページ実装（Sprint 1）
+  ✓ website/approach/   — /approach/ ページ実装（Sprint 2）
+  ✓ website/services/   — /services/ ページ実装（Sprint 3）
+
+進行中:
+  - Formspree ID 取得・フォーム接続（要オーナー対応）
+  - Sprint 4: /works/ ページ（Client Zero 実績）
+
+次のフォーカス:
+  1. Formspree フォームID取得 → index.html の REPLACE_WITH_FORM_ID を差し替え
+  2. Sprint 4: /works/ ページ制作
 ```
