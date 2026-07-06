@@ -348,3 +348,17 @@
     box-shadow: none;
   }
 }
+
+/* ---- 業種別グリッド --------------------------------------- */
+.industries-grid {
+  display:    grid;
+  gap:        var(--space-6);
+  list-style: none;
+  padding:    0;
+  margin:     0;
+}
+@media (min-width: 768px) {
+  .industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
