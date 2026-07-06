@@ -246,6 +246,7 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 |------|------|------|
 | 最高 | `company/01_hq-core/` | HQ Core — 全判断の根拠 |
 | 高 | `company/02_company-os/` | Company OS v2.0 + 実行ファイル群 |
+| 高 | `company/04_sales/` | 営業標準書 — `SALES_PLAYBOOK_v2.md` |
 | 高 | `company/05_audit-kit/` | Business Audit Kit v1.0 |
 | 中 | `company/08_execution-os/` | Automation & Execution OS |
 | 中 | `company/09_client-zero/` | Client Zero 実行システム |
