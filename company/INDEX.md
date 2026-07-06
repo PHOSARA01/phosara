@@ -12,7 +12,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 最高 | `01_hq-core/` | HQ Core — 全資産の根拠・原則 | `PHOSARA_HQ_CORE_v1_0.md` (50KB) |
 | 高 | `02_company-os/` | Company OS v2.0 + 実行ファイル群 | `PHOSARA_COMPANY_OS_v2_0.md`, `WORKFLOW.md`, `AGENTS.md` |
 | 高 | `05_audit-kit/` | Business Audit Kit v1.0（16ファイル） | `BUSINESS_AUDIT_SYSTEM.md`, `AUDIT_CHECKLIST.md` |
-| 高 | `10_skills/` | 共通思考プロトコル（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md` |
+| 高 | `10_skills/` | 共通思考プロトコル・Skills Library（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md` |
 | 中 | `08_execution-os/` | Automation & Execution OS | `PHOSARA_EXECUTION_OS_v1_0.md` |
 | 中 | `09_client-zero/` | Client Zero 実行システム | `PHOSARA_CLIENT_ZERO_EXECUTION_v1_0_1.md`（最新） |
 | 参照 | `06_pricing/` | 料金・価格ガバナンス | `PHOSARA_PRICING_GOVERNANCE_v1_0.md` |
@@ -71,7 +71,8 @@ company/
 │   ├── PHOSARA_CLIENT_ZERO_EXECUTION_v1_0.md
 │   └── PHOSARA_CLIENT_ZERO_EXECUTION_v1_0_1.md  ← 最新版
 ├── 10_skills/
-│   └── PHOSARA_META_THINKING_SYSTEM_v1_0.md  ← 全AI部署共通思考プロトコル
+│   ├── PHOSARA_META_THINKING_SYSTEM_v1_0.md              ← 全AI部署共通思考プロトコル
+│   └── PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md  ← Skills Library Vol.1
 └── 99_archive/
     ├── company-os-pre-v1.0/                      ← 旧 OS ファイル（参照禁止）
     └── audit-kit-v1.0/                           ← 旧監査キット（参照禁止）
