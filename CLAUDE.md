@@ -67,6 +67,7 @@ company/               PHOSARA HQ 正典資産（経営・実行OS）← company
   07_contracts/        Contract System v1.0
   08_execution-os/     Automation & Execution OS v1.0
   09_client-zero/      Client Zero 実行システム（最新: v1_0_1）
+  10_skills/           全AI部署共通思考プロトコル
   99_archive/          廃止版（参照・使用禁止）
 
 docs/                  公式資料
@@ -248,6 +249,7 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 | 高 | `company/05_audit-kit/` | Business Audit Kit v1.0 |
 | 中 | `company/08_execution-os/` | Automation & Execution OS |
 | 中 | `company/09_client-zero/` | Client Zero 実行システム |
+| 高 | `company/10_skills/` | 全AI部署共通思考プロトコル — `PHOSARA_META_THINKING_SYSTEM_v1_0.md` |
 | 参照 | `company/INDEX.md` | 全資産の索引（最初に確認） |
 
 ### ルール
