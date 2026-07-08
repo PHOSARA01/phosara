@@ -16,7 +16,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook・BAコミュニケーションテンプレート | `CLIENT_SUCCESS_PLAYBOOK.md`, `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー・PBOS更新ワークフロー | `KNOWLEDGE_FINAL_REVIEW.md`, `PBOS_UPDATE_WORKFLOW.md` |
-| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/` |
+| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0）・Runtime仕様（Phase 1） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/`, `runtime/` |
 | 高 | `05_audit-kit/` | Business Audit Kit v1.0（16ファイル） | `BUSINESS_AUDIT_SYSTEM.md`, `AUDIT_CHECKLIST.md` |
 | 高 | `10_skills/` | 共通思考プロトコル・Skills Library（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 中 | `08_execution-os/` | Automation & Execution OS | `PHOSARA_EXECUTION_OS_v1_0.md` |
@@ -108,17 +108,24 @@ company/
 │   │   ├── PHOSARA_AI_CLIENT_SUCCESS_AGENT_v1.md  ← Client Success AI
 │   │   ├── PHOSARA_AI_KNOWLEDGE_AGENT_v1.md       ← Knowledge AI
 │   │   └── PHOSARA_AI_PBOS_AGENT_v1.md            ← PBOS AI
-│   └── implementation/                            ← 実装基盤（Phase 0）
-│       ├── README.md                              ← 起点（Implementation Phase）
-│       ├── STATE.md                               ← 共有状態機械
-│       ├── WORKFLOW.md                            ← トリガー・運転サイクル
-│       ├── AGENTS.md                              ← AI従業員レジストリ
-│       ├── VERIFICATION.md                        ← 確信度モデル・検証基準
-│       ├── HUMAN_APPROVAL.md                      ← 承認方針
-│       ├── IMPLEMENTATION_LOG.md                  ← Phase別実装ログ
-│       ├── DIRECTORY_STRUCTURE.md                 ← ディレクトリ構造（正典）
-│       ├── .env.example                           ← 環境変数テンプレート
-│       └── logs/README.md                         ← ログ形式・命名規則
+│   ├── implementation/                            ← 実装基盤（Phase 0）
+│   │   ├── README.md                              ← 起点（Implementation Phase）
+│   │   ├── STATE.md                               ← 共有状態機械
+│   │   ├── WORKFLOW.md                            ← トリガー・運転サイクル
+│   │   ├── AGENTS.md                              ← AI従業員レジストリ
+│   │   ├── VERIFICATION.md                        ← 確信度モデル・検証基準
+│   │   ├── HUMAN_APPROVAL.md                      ← 承認方針
+│   │   ├── IMPLEMENTATION_LOG.md                  ← Phase別実装ログ
+│   │   ├── DIRECTORY_STRUCTURE.md                 ← ディレクトリ構造（正典）
+│   │   ├── .env.example                           ← 環境変数テンプレート
+│   │   └── logs/README.md                         ← ログ形式・命名規則
+│   └── runtime/                                   ← Runtime仕様（Phase 1）
+│       ├── README.md                              ← 起点・読む順番・各Runtimeの役割
+│       ├── PHOSARA_AI_CEO_RUNTIME_v1.md           ← CEO AI 運転仕様
+│       ├── PHOSARA_AI_SALES_RUNTIME_v1.md         ← Sales AI 運転仕様
+│       ├── PHOSARA_AI_CLIENT_SUCCESS_RUNTIME_v1.md ← CS AI 運転仕様
+│       ├── PHOSARA_AI_KNOWLEDGE_RUNTIME_v1.md     ← Knowledge AI 運転仕様
+│       └── PHOSARA_AI_PBOS_RUNTIME_v1.md          ← PBOS AI 運転仕様
 └── 99_archive/
     ├── company-os-pre-v1.0/                      ← 旧 OS ファイル（参照禁止）
     └── audit-kit-v1.0/                           ← 旧監査キット（参照禁止）
