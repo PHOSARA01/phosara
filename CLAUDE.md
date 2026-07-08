@@ -247,14 +247,14 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 | 最高 | `company/01_hq-core/` | HQ Core — 全判断の根拠 |
 | 高 | `company/00_brand/` | ブランド最終レビュー — `BRAND_FINAL_REVIEW.md` |
 | 高 | `company/02_company-os/` | Company OS v2.0 + 実行ファイル群 |
-| 高 | `company/04_sales/` | 営業標準書 — `SALES_PLAYBOOK_v2.md` / 営業現場ガイド — `SALES_FIELD_GUIDE.md` / 営業ログ規程 — `SALES_LOG_STANDARD.md` |
+| 高 | `company/04_sales/` | 営業標準書 — `SALES_PLAYBOOK_v2.md` / 営業現場ガイド — `SALES_FIELD_GUIDE.md` / 営業ログ規程 — `SALES_LOG_STANDARD.md` / 営業対象選定基準 — `SALES_TARGET_CRITERIA.md` |
 | 高 | `company/05_audit-kit/` | Business Audit Kit v1.0 |
 | 高 | `company/05_website/` | Webサイト最終レビュー — `WEBSITE_FINAL_REVIEW.md` |
 | 中 | `company/08_execution-os/` | Automation & Execution OS |
 | 中 | `company/09_client-zero/` | Client Zero 実行システム |
 | 高 | `company/10_skills/` | 全AI部署共通思考プロトコル — `PHOSARA_META_THINKING_SYSTEM_v1_0.md` / Skills Library Vol.1 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md` / Skills Library Vol.2 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 高 | `company/11_client-success/` | Client Success Playbook — `CLIENT_SUCCESS_PLAYBOOK.md` |
-| 参照 | `company/12_knowledge/` | ナレッジ最終レビュー — `KNOWLEDGE_FINAL_REVIEW.md` |
+| 参照 | `company/12_knowledge/` | ナレッジ最終レビュー — `KNOWLEDGE_FINAL_REVIEW.md` / PBOS更新ワークフロー — `PBOS_UPDATE_WORKFLOW.md` |
 | 参照 | `company/INDEX.md` | 全資産の索引（最初に確認） |
 
 ### ルール
