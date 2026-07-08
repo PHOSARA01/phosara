@@ -349,6 +349,20 @@
   }
 }
 
+/* ---- サービスグリッド ------------------------------------- */
+.services-grid {
+  display:    grid;
+  gap:        var(--space-6);
+  list-style: none;
+  padding:    0;
+  margin:     0;
+}
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* ---- 業種別グリッド --------------------------------------- */
 .industries-grid {
   display:    grid;
