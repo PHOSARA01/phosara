@@ -12,7 +12,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 最高 | `01_hq-core/` | HQ Core — 全資産の根拠・原則 | `PHOSARA_HQ_CORE_v1_0.md` (50KB) |
 | 高 | `00_brand/` | ブランド最終レビュー | `BRAND_FINAL_REVIEW.md` |
 | 高 | `02_company-os/` | Company OS v2.0 + 実行ファイル群 | `PHOSARA_COMPANY_OS_v2_0.md`, `WORKFLOW.md`, `AGENTS.md` |
-| 高 | `04_sales/` | 営業標準書 | `SALES_PLAYBOOK_v2.md` |
+| 高 | `04_sales/` | 営業標準書・現場ガイド・ログ規程 | `SALES_PLAYBOOK_v2.md`, `SALES_FIELD_GUIDE.md`, `SALES_LOG_STANDARD.md` |
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook | `CLIENT_SUCCESS_PLAYBOOK.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー | `KNOWLEDGE_FINAL_REVIEW.md` |
@@ -51,7 +51,9 @@ company/
 ├── 04_revenue-agent/
 │   └── PHOSARA_60DAY_REVENUE_AGENT.md
 ├── 04_sales/
-│   └── SALES_PLAYBOOK_v2.md  ← 営業標準書
+│   ├── SALES_PLAYBOOK_v2.md       ← 営業標準書
+│   ├── SALES_FIELD_GUIDE.md       ← 営業現場ガイド v1.0
+│   └── SALES_LOG_STANDARD.md      ← 営業ログ規程 v1.1
 ├── 05_website/
 │   └── WEBSITE_FINAL_REVIEW.md  ← Webサイト最終レビュー
 ├── 05_audit-kit/
