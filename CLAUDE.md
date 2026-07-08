@@ -255,6 +255,7 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 | 高 | `company/10_skills/` | 全AI部署共通思考プロトコル — `PHOSARA_META_THINKING_SYSTEM_v1_0.md` / Skills Library Vol.1 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md` / Skills Library Vol.2 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 高 | `company/11_client-success/` | Client Success Playbook — `CLIENT_SUCCESS_PLAYBOOK.md` / BAコミュニケーションテンプレート — `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `company/12_knowledge/` | ナレッジ最終レビュー — `KNOWLEDGE_FINAL_REVIEW.md` / PBOS更新ワークフロー — `PBOS_UPDATE_WORKFLOW.md` |
+| 高 | `company/13_ai-company/` | AI Company設計資産 — AI企業OS — `PHOSARA_AI_COMPANY_OS_v1.md` / 実装ロードマップ — `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md` / AI従業員定義 — `agents/`（CEO・Sales・CS・Knowledge・PBOS） |
 | 参照 | `company/INDEX.md` | 全資産の索引（最初に確認） |
 
 ### ルール

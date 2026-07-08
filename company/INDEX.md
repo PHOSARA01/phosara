@@ -16,6 +16,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook・BAコミュニケーションテンプレート | `CLIENT_SUCCESS_PLAYBOOK.md`, `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー・PBOS更新ワークフロー | `KNOWLEDGE_FINAL_REVIEW.md`, `PBOS_UPDATE_WORKFLOW.md` |
+| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/` |
 | 高 | `05_audit-kit/` | Business Audit Kit v1.0（16ファイル） | `BUSINESS_AUDIT_SYSTEM.md`, `AUDIT_CHECKLIST.md` |
 | 高 | `10_skills/` | 共通思考プロトコル・Skills Library（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 中 | `08_execution-os/` | Automation & Execution OS | `PHOSARA_EXECUTION_OS_v1_0.md` |
@@ -97,6 +98,16 @@ company/
 ├── 12_knowledge/
 │   ├── KNOWLEDGE_FINAL_REVIEW.md  ← ナレッジ最終レビュー
 │   └── PBOS_UPDATE_WORKFLOW.md    ← PBOS更新ワークフロー v1.0
+├── 13_ai-company/
+│   ├── README.md                                  ← 起点・読む順番・依存関係
+│   ├── PHOSARA_AI_COMPANY_OS_v1.md                ← AI企業憲法（最上位）
+│   ├── PHOSARA_AI_IMPLEMENTATION_ROADMAP.md       ← 実装ロードマップ
+│   └── agents/
+│       ├── PHOSARA_AI_CEO_AGENT_v1.md             ← CEO AI
+│       ├── PHOSARA_AI_SALES_AGENT_v1.md           ← Sales AI
+│       ├── PHOSARA_AI_CLIENT_SUCCESS_AGENT_v1.md  ← Client Success AI
+│       ├── PHOSARA_AI_KNOWLEDGE_AGENT_v1.md       ← Knowledge AI
+│       └── PHOSARA_AI_PBOS_AGENT_v1.md            ← PBOS AI
 └── 99_archive/
     ├── company-os-pre-v1.0/                      ← 旧 OS ファイル（参照禁止）
     └── audit-kit-v1.0/                           ← 旧監査キット（参照禁止）
