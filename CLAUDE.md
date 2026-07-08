@@ -255,7 +255,7 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 | 高 | `company/10_skills/` | 全AI部署共通思考プロトコル — `PHOSARA_META_THINKING_SYSTEM_v1_0.md` / Skills Library Vol.1 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md` / Skills Library Vol.2 — `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 高 | `company/11_client-success/` | Client Success Playbook — `CLIENT_SUCCESS_PLAYBOOK.md` / BAコミュニケーションテンプレート — `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `company/12_knowledge/` | ナレッジ最終レビュー — `KNOWLEDGE_FINAL_REVIEW.md` / PBOS更新ワークフロー — `PBOS_UPDATE_WORKFLOW.md` |
-| 高 | `company/13_ai-company/` | AI Company設計資産 — AI企業OS — `PHOSARA_AI_COMPANY_OS_v1.md` / 実装ロードマップ — `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md` / AI従業員定義 — `agents/`（CEO・Sales・CS・Knowledge・PBOS） |
+| 高 | `company/13_ai-company/` | AI Company設計資産 — AI企業OS — `PHOSARA_AI_COMPANY_OS_v1.md` / 実装ロードマップ — `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md` / AI従業員定義 — `agents/`（CEO・Sales・CS・Knowledge・PBOS） / 実装基盤（Phase 0）— `implementation/`（STATE・WORKFLOW・AGENTS・HUMAN_APPROVAL・VERIFICATION・IMPLEMENTATION_LOG・DIRECTORY_STRUCTURE・.env.example・logs/） |
 | 参照 | `company/INDEX.md` | 全資産の索引（最初に確認） |
 
 ### ルール
@@ -279,7 +279,7 @@ AIエージェントが PHOSARA の経営・実行資産を参照する際のル
 ## 現在のフェーズ
 
 ```
-Phase: 公式サイト実装中 + PHOSARA HQ 基盤構築完了
+Phase: 公式サイト実装中 + PHOSARA HQ 基盤構築完了 + AI Company Implementation Phase 0 完了
 完了済み:
   ✓ GitHubリポジトリ構成の整備
   ✓ CLAUDE.md整備・AIエージェント接続
@@ -287,12 +287,16 @@ Phase: 公式サイト実装中 + PHOSARA HQ 基盤構築完了
   ✓ website/index.html — トップページ実装（Sprint 1）
   ✓ website/approach/   — /approach/ ページ実装（Sprint 2）
   ✓ website/services/   — /services/ ページ実装（Sprint 3）
+  ✓ AI Company Design Phase — 設計資産の正式登録（company/13_ai-company/）
+  ✓ AI Company Implementation Phase 0 — 実装基盤構築（company/13_ai-company/implementation/）
 
 進行中:
   - Formspree ID 取得・フォーム接続（要オーナー対応）
   - Sprint 4: /works/ ページ（Client Zero 実績）
+  - AI Company Implementation Phase 1 待機中（Phase 0 完了条件の全項目承認が条件）
 
 次のフォーカス:
   1. Formspree フォームID取得 → index.html の REPLACE_WITH_FORM_ID を差し替え
   2. Sprint 4: /works/ ページ制作
+  3. AI Company Phase 1: Claude Code MVP（Sales / CS / Knowledge Agent）
 ```
