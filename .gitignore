@@ -61,6 +61,9 @@ temp/
 *_backup.md
 *_local.md
 
+# Client raw interview data (contains personal/confidential info)
+07_clients/client_zero/02_audit/business/INTERVIEW_RAW_DAY2.md
+
 # Secrets
 *.pem
 *.key
