@@ -16,7 +16,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook・BAコミュニケーションテンプレート | `CLIENT_SUCCESS_PLAYBOOK.md`, `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー・PBOS更新ワークフロー | `KNOWLEDGE_FINAL_REVIEW.md`, `PBOS_UPDATE_WORKFLOW.md` |
-| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0）・Runtime仕様・Sales AI MVP・Client Success AI MVP（Phase 1） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/`, `runtime/` |
+| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0）・Runtime仕様・Sales AI MVP・Client Success AI MVP・Knowledge AI MVP（Phase 1） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/`, `runtime/` |
 | 高 | `05_audit-kit/` | Business Audit Kit v1.0（16ファイル） | `BUSINESS_AUDIT_SYSTEM.md`, `AUDIT_CHECKLIST.md` |
 | 高 | `10_skills/` | 共通思考プロトコル・Skills Library（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 中 | `08_execution-os/` | Automation & Execution OS | `PHOSARA_EXECUTION_OS_v1_0.md` |
@@ -119,25 +119,35 @@ company/
 │   │   ├── DIRECTORY_STRUCTURE.md                 ← ディレクトリ構造（正典）
 │   │   ├── .env.example                           ← 環境変数テンプレート
 │   │   ├── logs/README.md                         ← ログ形式・命名規則
-│   │   └── phase1-sales-mvp/                      ← Sales AI MVP（Phase 1）
+│   │   ├── phase1-sales-mvp/                      ← Sales AI MVP（Phase 1）
+│   │   │   ├── README.md                          ← 起点・スコープ・使い方
+│   │   │   ├── SALES_MVP_WORKFLOW.md              ← 10ステップ実行フロー
+│   │   │   ├── SALES_MVP_STATE.md                 ← 状態機械（MVP版）
+│   │   │   ├── SALES_MVP_INPUT.md                 ← 入力定義
+│   │   │   ├── SALES_MVP_OUTPUT.md                ← 出力定義
+│   │   │   ├── OWNER_APPROVAL_QUEUE.md            ← 承認キュー（運用ファイル）
+│   │   │   ├── SALES_MVP_LOG.md                   ← Sales Log（運用ファイル）
+│   │   │   ├── DAILY_SALES_REPORT_TEMPLATE.md     ← 日次報告テンプレート
+│   │   │   └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
+│   │   ├── phase1-client-success-mvp/             ← Client Success AI MVP（Phase 1）
+│   │   │   ├── README.md                          ← 起点・スコープ・使い方
+│   │   │   ├── CLIENT_SUCCESS_MVP_WORKFLOW.md     ← ステップ別実行フロー
+│   │   │   ├── CLIENT_SUCCESS_MVP_STATE.md        ← 顧客状態台帳（唯一の正）
+│   │   │   ├── CLIENT_SUCCESS_MVP_INPUT.md        ← 入力定義（ハンドオフ書式）
+│   │   │   ├── CLIENT_SUCCESS_MVP_OUTPUT.md       ← 出力定義（ドラフト・報告）
+│   │   │   ├── OWNER_APPROVAL_QUEUE.md            ← 承認キュー（運用ファイル）
+│   │   │   ├── CLIENT_SUCCESS_MVP_LOG.md          ← ランタイムログ（運用ファイル）
+│   │   │   ├── DAILY_CLIENT_SUCCESS_REPORT_TEMPLATE.md ← 日次報告テンプレート
+│   │   │   └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
+│   │   └── phase1-knowledge-mvp/                  ← Knowledge AI MVP（Phase 1）
 │   │       ├── README.md                          ← 起点・スコープ・使い方
-│   │       ├── SALES_MVP_WORKFLOW.md              ← 10ステップ実行フロー
-│   │       ├── SALES_MVP_STATE.md                 ← 状態機械（MVP版）
-│   │       ├── SALES_MVP_INPUT.md                 ← 入力定義
-│   │       ├── SALES_MVP_OUTPUT.md                ← 出力定義
-│   │       ├── OWNER_APPROVAL_QUEUE.md            ← 承認キュー（運用ファイル）
-│   │       ├── SALES_MVP_LOG.md                   ← Sales Log（運用ファイル）
-│   │       ├── DAILY_SALES_REPORT_TEMPLATE.md     ← 日次報告テンプレート
-│   │       └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
-│   │   └── phase1-client-success-mvp/             ← Client Success AI MVP（Phase 1）
-│   │       ├── README.md                          ← 起点・スコープ・使い方
-│   │       ├── CLIENT_SUCCESS_MVP_WORKFLOW.md     ← ステップ別実行フロー
-│   │       ├── CLIENT_SUCCESS_MVP_STATE.md        ← 顧客状態台帳（唯一の正）
-│   │       ├── CLIENT_SUCCESS_MVP_INPUT.md        ← 入力定義（ハンドオフ書式）
-│   │       ├── CLIENT_SUCCESS_MVP_OUTPUT.md       ← 出力定義（ドラフト・報告）
-│   │       ├── OWNER_APPROVAL_QUEUE.md            ← 承認キュー（運用ファイル）
-│   │       ├── CLIENT_SUCCESS_MVP_LOG.md          ← ランタイムログ（運用ファイル）
-│   │       ├── DAILY_CLIENT_SUCCESS_REPORT_TEMPLATE.md ← 日次報告テンプレート
+│   │       ├── KNOWLEDGE_MVP_WORKFLOW.md          ← ステップ別実行フロー（KN-MVP-01〜08）
+│   │       ├── KNOWLEDGE_MVP_STATE.md             ← 知識アイテム台帳（唯一の正）
+│   │       ├── KNOWLEDGE_MVP_INPUT.md             ← 入力定義（ハンドオフ書式）
+│   │       ├── KNOWLEDGE_MVP_OUTPUT.md            ← 出力定義（パターン・改版案・報告）
+│   │       ├── KNOWLEDGE_APPROVAL_QUEUE.md        ← 正典昇格・改版・開示の承認キュー
+│   │       ├── KNOWLEDGE_MVP_LOG.md               ← ランタイムログ（運用ファイル）
+│   │       ├── DAILY_KNOWLEDGE_REPORT_TEMPLATE.md ← 日次報告テンプレート
 │   │       └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
 │   └── runtime/                                   ← Runtime仕様（Phase 1）
 │       ├── README.md                              ← 起点・読む順番・各Runtimeの役割
