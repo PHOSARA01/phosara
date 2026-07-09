@@ -15,6 +15,7 @@
 - **区画**: assets / memo / confidential / canon / archive
 - **状態**: NEW / ANALYZING / READY / WAITING_APPROVAL / EXECUTING / WAITING / LEARNING / COMPLETED
 - **原文所在**: ハンドオフ元 AI と LOG エントリ ID（例: Sales AI / SL-20260709-001）
+- **出所**（原文所在欄に併記）: Sales / CS / 人間 / 自己（夜間整合検査で発見）
 - **温度**: 正常 / 注意 / 警告（警告はブリーフ即掲載）
 - **期限**: WAITING 状態の確認期限（7 日）/ WAITING_APPROVAL の承認期限（48 時間）
 

@@ -120,6 +120,25 @@ Sales AI / Client Success AI から届いた収穫データを受領・分類し
 | 正典に未達のメモ | memo/ |
 | 退役 | archive/ |
 
+### リポジトリ 5 区画（Phase 1 ディレクトリ構造）
+
+```
+repository/
+├── canon/          ← 正典（昇格は承認必須）
+├── assets/         ← 収穫資産（部品・文例・記入例）
+├── memo/           ← 正典 3 条件未達のメモ
+├── confidential/   ← 機密（開示未確定・公開系への移動禁止）
+└── archive/        ← 退役資産（削除しない）
+```
+
+区画間の移動はすべて LOG に記帳する。索引なき格納を完了と認めない。
+
+### 格納ファイルの命名規約
+
+`種別_内容要約_vX_X.md`（英語ファイル名・日本語本文・SemVer）
+
+例: `success_pattern_initial_audit_v1_0.md`
+
 ---
 
 ## 依存関係
