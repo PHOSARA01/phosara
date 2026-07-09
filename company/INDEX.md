@@ -118,7 +118,17 @@ company/
 │   │   ├── IMPLEMENTATION_LOG.md                  ← Phase別実装ログ
 │   │   ├── DIRECTORY_STRUCTURE.md                 ← ディレクトリ構造（正典）
 │   │   ├── .env.example                           ← 環境変数テンプレート
-│   │   └── logs/README.md                         ← ログ形式・命名規則
+│   │   ├── logs/README.md                         ← ログ形式・命名規則
+│   │   └── phase1-sales-mvp/                      ← Sales AI MVP（Phase 1）
+│   │       ├── README.md                          ← 起点・スコープ・使い方
+│   │       ├── SALES_MVP_WORKFLOW.md              ← 10ステップ実行フロー
+│   │       ├── SALES_MVP_STATE.md                 ← 状態機械（MVP版）
+│   │       ├── SALES_MVP_INPUT.md                 ← 入力定義
+│   │       ├── SALES_MVP_OUTPUT.md                ← 出力定義
+│   │       ├── OWNER_APPROVAL_QUEUE.md            ← 承認キュー（運用ファイル）
+│   │       ├── SALES_MVP_LOG.md                   ← Sales Log（運用ファイル）
+│   │       ├── DAILY_SALES_REPORT_TEMPLATE.md     ← 日次報告テンプレート
+│   │       └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
 │   └── runtime/                                   ← Runtime仕様（Phase 1）
 │       ├── README.md                              ← 起点・読む順番・各Runtimeの役割
 │       ├── PHOSARA_AI_CEO_RUNTIME_v1.md           ← CEO AI 運転仕様
