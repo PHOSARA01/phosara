@@ -16,7 +16,7 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook・BAコミュニケーションテンプレート | `CLIENT_SUCCESS_PLAYBOOK.md`, `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー・PBOS更新ワークフロー | `KNOWLEDGE_FINAL_REVIEW.md`, `PBOS_UPDATE_WORKFLOW.md` |
-| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0）・Runtime仕様・Sales AI MVP・Client Success AI MVP・Knowledge AI MVP・PBOS AI MVP（Phase 1） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/`, `runtime/` |
+| 高 | `13_ai-company/` | AI Company設計資産（AI企業OS・実装ロードマップ・AI従業員定義）・実装基盤（Phase 0）・Runtime仕様・Sales AI MVP・Client Success AI MVP・Knowledge AI MVP・PBOS AI MVP・CEO AI MVP（Phase 1） | `PHOSARA_AI_COMPANY_OS_v1.md`, `PHOSARA_AI_IMPLEMENTATION_ROADMAP.md`, `agents/`, `implementation/`, `runtime/` |
 | 高 | `05_audit-kit/` | Business Audit Kit v1.0（16ファイル） | `BUSINESS_AUDIT_SYSTEM.md`, `AUDIT_CHECKLIST.md` |
 | 高 | `10_skills/` | 共通思考プロトコル・Skills Library（全AI部署適用） | `PHOSARA_META_THINKING_SYSTEM_v1_0.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME1_THINKING_AND_DECISION.md`, `PHOSARA_SKILLS_LIBRARY_v1_VOLUME2_SALES_AND_BUSINESS_AUDIT.md` |
 | 中 | `08_execution-os/` | Automation & Execution OS | `PHOSARA_EXECUTION_OS_v1_0.md` |
@@ -149,15 +149,25 @@ company/
 │   │   │   ├── KNOWLEDGE_MVP_LOG.md               ← ランタイムログ（運用ファイル）
 │   │   │   ├── DAILY_KNOWLEDGE_REPORT_TEMPLATE.md ← 日次報告テンプレート
 │   │   │   └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
-│   │   └── phase1-pbos-mvp/                       ← PBOS AI MVP（Phase 1）
+│   │   ├── phase1-pbos-mvp/                       ← PBOS AI MVP（Phase 1）
+│   │   │   ├── README.md                          ← 起点・スコープ・使い方
+│   │   │   ├── PBOS_MVP_WORKFLOW.md               ← ステップ別実行フロー（PB-MVP-01〜07）
+│   │   │   ├── PBOS_MVP_STATE.md                  ← 改善機会台帳・資産価値台帳（唯一の正）
+│   │   │   ├── PBOS_MVP_INPUT.md                  ← 入力定義（ハンドオフ書式）
+│   │   │   ├── PBOS_MVP_OUTPUT.md                 ← 出力定義（改善提案・Kill 提案・報告）
+│   │   │   ├── PBOS_APPROVAL_QUEUE.md             ← 改善・Kill・Archive の承認キュー
+│   │   │   ├── PBOS_MVP_LOG.md                    ← ランタイムログ（運用ファイル）
+│   │   │   ├── DAILY_PBOS_REPORT_TEMPLATE.md      ← 日次報告テンプレート
+│   │   │   └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
+│   │   └── phase1-ceo-mvp/                        ← CEO AI MVP（Phase 1）
 │   │       ├── README.md                          ← 起点・スコープ・使い方
-│   │       ├── PBOS_MVP_WORKFLOW.md               ← ステップ別実行フロー（PB-MVP-01〜07）
-│   │       ├── PBOS_MVP_STATE.md                  ← 改善機会台帳・資産価値台帳（唯一の正）
-│   │       ├── PBOS_MVP_INPUT.md                  ← 入力定義（ハンドオフ書式）
-│   │       ├── PBOS_MVP_OUTPUT.md                 ← 出力定義（改善提案・Kill 提案・報告）
-│   │       ├── PBOS_APPROVAL_QUEUE.md             ← 改善・Kill・Archive の承認キュー
-│   │       ├── PBOS_MVP_LOG.md                    ← ランタイムログ（運用ファイル）
-│   │       ├── DAILY_PBOS_REPORT_TEMPLATE.md      ← 日次報告テンプレート
+│   │       ├── CEO_MVP_WORKFLOW.md                ← ステップ別実行フロー（CE-MVP-01〜07）
+│   │       ├── CEO_MVP_STATE.md                   ← 議題・決定台帳（唯一の正）
+│   │       ├── CEO_MVP_INPUT.md                   ← 入力定義（4 報告の受領規則）
+│   │       ├── CEO_MVP_OUTPUT.md                  ← 出力定義（Brief・推奨・決定配信）
+│   │       ├── CEO_APPROVAL_QUEUE.md              ← 全 AI 統合の承認キュー
+│   │       ├── CEO_MVP_LOG.md                     ← ランタイムログ（運用ファイル）
+│   │       ├── DAILY_CEO_BRIEF_TEMPLATE.md        ← Daily CEO Brief テンプレート
 │   │       └── CONFLICT_LOG.md                    ← 仕様矛盾・未定義ログ
 │   └── runtime/                                   ← Runtime仕様（Phase 1）
 │       ├── README.md                              ← 起点・読む順番・各Runtimeの役割
