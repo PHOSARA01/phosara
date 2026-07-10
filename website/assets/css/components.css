@@ -237,7 +237,7 @@
   text-align:       center;
 }
 .cta-section-inner {
-  max-width: var(--container-max);
+  max-width: 800px;
   margin:    0 auto;
   padding:   0 var(--space-6);
 }
@@ -262,6 +262,13 @@
   color:         var(--color-text-muted);
   line-height:   var(--leading-body);
   margin-bottom: var(--space-12);
+}
+
+/* ---- コンタクトフォーム ---------------------------------- */
+.contact-form {
+  max-width:  640px;
+  margin:     var(--space-8) auto 0;
+  text-align: left;
 }
 .contact-form-guide {
   font-size:     var(--text-sm);
@@ -291,9 +298,11 @@
   margin-bottom: var(--space-4);
 }
 .section-heading-body {
-  font-size:   var(--text-base);
-  color:       var(--color-text-sub);
-  line-height: var(--leading-body);
+  font-size:     var(--text-base);
+  color:         var(--color-text-sub);
+  line-height:   var(--leading-body);
+  max-width:     640px;
+  margin-inline: auto;
 }
 
 /* ---- タグ ------------------------------------------------ */
