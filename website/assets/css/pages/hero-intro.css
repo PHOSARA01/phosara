@@ -1,0 +1,188 @@
+/* ============================================================
+  hero-intro.css — Hero Opening Animation
+  PHOSARA Website — 初回ロード時のみ再生（sessionStorage管理）
+  Design System v2.0 Section 14 参照
+
+  ロゴ SVG 分析:
+    viewBox: 0 0 793.77 88.1
+    O（赤い円）: cx=285.49 cy=43.66 r=43.41
+    O の位置: x=35.97%  y=49.56% （= 縦ほぼ中央）
+    O の直径: 86.82px / 793.77 = 10.94% of logo width
+============================================================ */
+
+/* --------------------------------------------------
+  オーバーレイ本体
+  z-index 8000 — header(100) より前面、skip-link(9999) より背面
+-------------------------------------------------- */
+#hero-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* JS から更新: O circle の画面 X 位置（デフォルト = 近似値） */
+  --hi-o-x: 42%;
+}
+
+/* JS フェールセーフ: 5s 後に消去 */
+#hero-intro {
+  animation: hi-failsafe 0.6s ease-in 5s forwards;
+}
+
+/* hidden 属性で完全除去 */
+#hero-intro[hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------
+  ロゴコンテナ
+  ① 黒画面 → ② ロゴフェードイン
+-------------------------------------------------- */
+.hi-logo {
+  position: relative;
+  width: min(480px, 78vw);
+  z-index: 2;
+  opacity: 0;
+  animation: hi-logo-in 0.65s cubic-bezier(0, 0, 0.2, 1) 0.25s forwards;
+}
+
+.hi-logo > svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------
+  発光エフェクト（O の位置に精密配置）
+  top: 49.56% = cy/height = 43.66/88.1
+  left: 35.97% = cx/width = 285.49/793.77
+  width: 10.94% = diameter/width = 86.82/793.77
+  ③ 赤い点が静かに発光
+-------------------------------------------------- */
+.hi-glow {
+  position: absolute;
+  top: 49.56%;
+  left: 35.97%;
+  transform: translate(-50%, -50%);
+  width: 10.94%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 100, 100, 0.95)  0%,
+    rgba(230,   0,  18, 0.75) 35%,
+    rgba(230,   0,  18, 0)    70%
+  );
+  opacity: 0;
+  animation: hi-glow-in 0.7s ease-out 0.9s forwards;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------
+  水平光ビーム（画面全幅）
+  transform-origin は JS で --hi-o-x に更新
+  ④ 赤い光が左右へ伸びる → ⑤ 画面端まで → ⑥ 少しフェード
+-------------------------------------------------- */
+.hi-beam {
+  position: absolute;
+  top: 50%;                     /* O の垂直中心 ≈ 50vh（ロゴは縦中央揃え） */
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: var(--hi-o-x) center;
+  /* グラデーション: O 位置をピークに左右へ減衰 */
+  background: linear-gradient(
+    to right,
+    transparent                          0%,
+    rgba(198,  31,  31, 0.2)  calc(var(--hi-o-x) - 32%),
+    rgba(198,  31,  31, 0.8)  calc(var(--hi-o-x) -  6%),
+    #e60012                   calc(var(--hi-o-x) -  1%),
+    #ffffff                              var(--hi-o-x),
+    #e60012                   calc(var(--hi-o-x) +  1%),
+    rgba(198,  31,  31, 0.8)  calc(var(--hi-o-x) +  6%),
+    rgba(198,  31,  31, 0.2)  calc(var(--hi-o-x) + 32%),
+    transparent                          100%
+  );
+  animation: hi-beam-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.1s forwards;
+  pointer-events: none;
+}
+
+/* グロー層（ぼかし） */
+.hi-beam::before {
+  content: '';
+  position: absolute;
+  inset: -12px 0;
+  background: inherit;
+  filter: blur(16px);
+  opacity: 0.5;
+}
+
+/* ホワイトコア（中心の細い輝線） */
+.hi-beam::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent                          0%,
+    rgba(255, 200, 200, 0.3)  calc(var(--hi-o-x) - 22%),
+    rgba(255, 255, 255, 0.85) calc(var(--hi-o-x) -  1%),
+    #ffffff                              var(--hi-o-x),
+    rgba(255, 255, 255, 0.85) calc(var(--hi-o-x) +  1%),
+    rgba(255, 200, 200, 0.3)  calc(var(--hi-o-x) + 22%),
+    transparent                          100%
+  );
+}
+
+/* --------------------------------------------------
+  キーフレーム
+-------------------------------------------------- */
+
+/* ① → ② ロゴフェードイン（わずかなスケール伴う） */
+@keyframes hi-logo-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ③ 発光（点灯 → ピーク → 落ち着き） */
+@keyframes hi-glow-in {
+  0%   {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    box-shadow: 0 0  0  0 rgba(198,31,31,0);
+  }
+  45%  {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 50px 16px rgba(198,31,31,0.8);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 28px  8px rgba(198,31,31,0.55);
+  }
+}
+
+/* ④ → ⑤ → ⑥ ビーム展開（高速展開 → わずかに減衰） */
+@keyframes hi-beam-in {
+  from  { transform: translateY(-50%) scaleX(0);   opacity: 0; }
+  5%    { opacity: 1; }
+  82%   { transform: translateY(-50%) scaleX(1);   opacity: 1; }
+  100%  { transform: translateY(-50%) scaleX(1);   opacity: 0.72; }
+}
+
+/* フェールセーフ（JS 無効・タイムアウト時） */
+@keyframes hi-failsafe {
+  to { opacity: 0; pointer-events: none; }
+}
+
+/* --------------------------------------------------
+  prefers-reduced-motion — アニメーション完全スキップ
+-------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  #hero-intro { display: none !important; }
+}
