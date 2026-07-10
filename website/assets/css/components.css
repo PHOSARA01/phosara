@@ -385,3 +385,20 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ---- カード見出し・本文（共通） --------------------------- */
+.card h3 {
+  font-size:     var(--text-base);
+  font-weight:   var(--weight-semibold);
+  color:         var(--color-text);
+  line-height:   var(--leading-tight);
+  margin-bottom: var(--space-3);
+  margin-top:    var(--space-3);
+}
+.card p {
+  font-size:     var(--text-sm);
+  color:         var(--color-text-sub);
+  line-height:   var(--leading-body);
+  margin-bottom: var(--space-4);
+}
+

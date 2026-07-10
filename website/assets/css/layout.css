@@ -85,21 +85,16 @@
 }
 .site-logo__asset img {
   display:   block;
-  width:     auto;
-  height:    20px;
+  width:     160px;
+  height:    auto;
   max-width: none;
-}
-@media (min-width: 768px) {
-  .site-logo__asset img {
-    height: 24px;
-  }
 }
 @media (min-width: 1024px) {
   .global-header .site-logo__asset img {
-    height: 28px;
+    width: 200px;
   }
   .global-footer .site-logo__asset img {
-    height: 18px;
+    width: 140px;
   }
 }
 .site-logo:hover .site-logo__asset {
@@ -137,29 +132,20 @@
 }
 
 /* ---- ナビ CTA ------------------------------------------- */
-.nav-cta {
-  display: none;
-}
-@media (min-width: 1024px) {
-  .nav-cta {
-    display: inline-flex;
-  }
-}
-
-/* ---- モバイル用 CTA ボタン -------------------------------- */
-.nav-cta-mobile {
+/* 詳細度 (0,2,0) — .btn-primary (0,1,0) より優先し確実に表示 */
+/* モバイル: 小サイズで常時表示 / PC: 通常サイズ */
+.global-header-inner .nav-cta {
   display:        inline-flex;
-  align-items:    center;
-  justify-content: center;
-  padding:        var(--space-2) var(--space-3);
   font-size:      0.7rem;
+  padding:        var(--space-2) var(--space-3);
   letter-spacing: 0.06em;
-  font-weight:    var(--weight-semibold);
   white-space:    nowrap;
 }
 @media (min-width: 1024px) {
-  .nav-cta-mobile {
-    display: none;
+  .global-header-inner .nav-cta {
+    font-size:      var(--text-sm);
+    padding:        var(--space-3) var(--space-8);
+    letter-spacing: 0.08em;
   }
 }
 
@@ -246,13 +232,9 @@
     font-size: 3.5rem;
   }
 }
+/* 全幅: 「つくる前に、」「事業を診る。」で意味の区切りを維持 */
 .hero-title-br {
-  display: none;
-}
-@media (max-width: 767px) {
-  .hero-title-br {
-    display: inline;
-  }
+  display: inline;
 }
 @media (min-width: 1024px) {
   .hero-title {
@@ -396,5 +378,6 @@
 }
 .footer-copy {
   font-size: var(--text-sm);
-  color:     var(--color-text-muted);
+  /* #888 on #121212 = contrast 5.66:1 — WCAG AA 4.5:1 合格（--color-text-muted は変更しない） */
+  color:     #888;
 }

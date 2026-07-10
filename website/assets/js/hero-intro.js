@@ -17,6 +17,12 @@
   var FADEOUT_START  = 2200;   /* ms: フェードアウト開始 */
   var FADEOUT_DUR    = 750;    /* ms: フェードアウト所要時間 */
 
+  // ---- 機能フラグ: index.html の window.PHI_INTRO_ENABLED が正本 --------
+  // 再有効化は index.html の PHI_INTRO_ENABLED を true に変えるだけで完了
+  if (window.PHI_INTRO_ENABLED !== true) {
+    return;
+  }
+
   // ---- prefers-reduced-motion チェック ----------------------
   // CSS 側でも対応済み。JS 側でも即時スキップ
   if (window.matchMedia &&
@@ -57,19 +63,31 @@
     if (!overlay) { return; }
 
     // ---- O circle の画面 X 位置を --hi-o-x に反映 -----------
-    // transform-origin とグラデーションピークを O の実座標に合わせる
+    // read(getBoundingClientRect) と write(setProperty) をフレーム分離して Forced Reflow を回避
     function syncBeamOrigin() {
       if (!oCircle) { return; }
       try {
-        var rect = oCircle.getBoundingClientRect();
-        if (rect.width === 0) { return; }     /* まだレイアウト前 */
+        var rect = oCircle.getBoundingClientRect();  /* read: レイアウト確定値を取得 */
+        if (rect.width === 0) { return; }            /* まだレイアウト前 */
         var cx  = rect.left + rect.width / 2;
         var pct = (cx / window.innerWidth * 100).toFixed(2) + '%';
-        overlay.style.setProperty('--hi-o-x', pct);
+        /* write を次フレームへ分離 — 同一スタック内での read→write Forced Reflow を防ぐ */
+        requestAnimationFrame(function () {
+          overlay.style.setProperty('--hi-o-x', pct);
+        });
       } catch (e) {}
     }
 
     syncBeamOrigin();
+
+    // ---- 共通クリーンアップ: 正常終了・ESCスキップの両方から呼ぶ ----
+    // onEsc リスナー削除もここで一元管理し、正常終了後のリスナー残存を防ぐ
+    function cleanup() {
+      document.removeEventListener('keydown', onEsc);
+      overlay.hidden           = true;
+      overlay.style.transition = '';
+      overlay.style.opacity    = '';
+    }
 
     // ---- フェードアウト → オーバーレイ除去 ------------------
     var fadeTimer = setTimeout(function () {
@@ -77,18 +95,14 @@
       overlay.style.opacity    = '0';
 
       var removeTimer = setTimeout(function () {
-        overlay.hidden           = true;
-        overlay.style.transition = '';
-        overlay.style.opacity    = '';
+        cleanup();
       }, FADEOUT_DUR + 60);
 
       /* 万が一フェードが終わらなくても強制除去 */
       overlay.addEventListener('transitionend', function onEnd() {
         overlay.removeEventListener('transitionend', onEnd);
         clearTimeout(removeTimer);
-        overlay.hidden           = true;
-        overlay.style.transition = '';
-        overlay.style.opacity    = '';
+        cleanup();
       });
 
     }, FADEOUT_START);
@@ -96,9 +110,8 @@
     /* ESC キーでスキップ（アクセシビリティ対応） */
     function onEsc(e) {
       if (e.key !== 'Escape') { return; }
-      document.removeEventListener('keydown', onEsc);
       clearTimeout(fadeTimer);
-      overlay.hidden = true;
+      cleanup();
     }
     document.addEventListener('keydown', onEsc);
   });

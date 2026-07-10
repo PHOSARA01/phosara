@@ -12,7 +12,7 @@
   <meta name="twitter:card"       content="summary_large_image">
   <title>PHOSARA｜Business Auditから始めるクリエイティブブランド</title>
   <link rel="canonical"  href="https://phosara.com/">
-  <link rel="icon"             href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,21 @@
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/pages/hero-intro.css">
   <!-- Hero Opening Animation: セッション既再生時はオーバーレイを即時非表示 -->
-  <script>try{if(sessionStorage.getItem('phi-intro')){document.documentElement.setAttribute('data-phi-done','');}}catch(e){}</script>
+  <!-- PHI_INTRO_ENABLED: false=営業開始版デフォルト無効 / true=Premium Cinematic Upgrade有効 -->
+  <!-- 再有効化: window.PHI_INTRO_ENABLED = false を true に変えるだけで完了 -->
+  <script>
+    window.PHI_INTRO_ENABLED = false;
+    try {
+      if (
+        window.PHI_INTRO_ENABLED !== true ||
+        sessionStorage.getItem('phi-intro')
+      ) {
+        document.documentElement.setAttribute('data-phi-done', '');
+      }
+    } catch (e) {
+      document.documentElement.setAttribute('data-phi-done', '');
+    }
+  </script>
   <style>[data-phi-done] #hero-intro{display:none!important}</style>
 </head>
 <body>
@@ -83,8 +97,8 @@
         <img
           src="/assets/images/logos/phosara-logo.svg"
           alt="PHOSARA"
-          width="252"
-          height="28"
+          width="160"
+          height="18"
           decoding="async"
           loading="eager"
         >
@@ -100,11 +114,8 @@
       </ul>
     </nav>
 
-    <!-- 相談CTAリンク（PCのみ） -->
+    <!-- 無料相談CTA（全サイズ共通 — モバイルは小サイズ、PCは通常サイズ） -->
     <a href="#contact" class="nav-cta btn-primary">無料相談</a>
-
-    <!-- 無料相談ボタン（モバイルのみ） -->
-    <a href="#contact" class="nav-cta-mobile btn-primary">無料相談</a>
 
     <!-- ハンバーガーボタン（モバイルのみ） -->
     <button
@@ -129,10 +140,10 @@
 <div id="mobile-menu" class="mobile-menu" hidden aria-hidden="true">
   <nav aria-label="モバイルナビゲーション">
     <ul class="nav-list" role="list">
-      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#about"      class="nav-link">About</a></li>
       <li><a href="#services"   class="nav-link">Services</a></li>
       <li><a href="#industries" class="nav-link">業種別</a></li>
-      <li><a href="#contact"  class="nav-link">無料相談</a></li>
+      <li><a href="#contact"    class="nav-link">無料相談</a></li>
     </ul>
   </nav>
 </div>
@@ -272,9 +283,9 @@
     </div>
   </section>
 
-  <!-- Works: 正式資産未確定につき一時非表示。正式コンテンツ確定後に公開する。 -->
+  <!-- Works Section: 一時非表示（正式コンテンツ・掲載方針確定後に公開） -->
 
-  <!-- Journal: 記事コンテンツ未確定につき一時非表示。記事確定後に公開する。 -->
+  <!-- Journal Section: 一時非表示（記事コンテンツ確定後に公開） -->
 
   <!-- ======================================
     Contact Section
@@ -390,8 +401,8 @@
           <img
             src="/assets/images/logos/phosara-logo.svg"
             alt="PHOSARA"
-            width="162"
-            height="18"
+            width="140"
+            height="16"
             decoding="async"
           >
         </span>
