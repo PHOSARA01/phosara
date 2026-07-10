@@ -3,11 +3,11 @@
   PHOSARA Website — 初回ロード時のみ再生（sessionStorage管理）
   Design System v2.0 Section 14 参照
 
-  ロゴ SVG 分析:
-    viewBox: 0 0 793.77 88.1
-    O（赤い円）: cx=285.49 cy=43.66 r=43.41
-    O の位置: x=35.97%  y=49.56% （= 縦ほぼ中央）
-    O の直径: 86.82px / 793.77 = 10.94% of logo width
+  ロゴ SVG 分析（正式シンボル: 三日月+十字+赤点）:
+    viewBox: 0 0 719.75 843.1
+    赤い円: cx=421.55 cy=422.05 r=74.98
+    赤点位置: x=58.57%  y=50.06% （= ほぼ中央）
+    赤点直径: 149.96 / 719.75 = 20.83% of logo width
 ============================================================ */
 
 /* --------------------------------------------------
@@ -23,8 +23,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* JS から更新: O circle の画面 X 位置（デフォルト = 近似値） */
-  --hi-o-x: 42%;
+  /* JS から更新: 赤点の画面 X 位置（デフォルト = 近似値） */
+  --hi-o-x: 54%;
 }
 
 /* JS フェールセーフ: 5s 後に消去 */
@@ -43,7 +43,7 @@
 -------------------------------------------------- */
 .hi-logo {
   position: relative;
-  width: min(480px, 78vw);
+  width: min(260px, 52vw);
   z-index: 2;
   opacity: 0;
   animation: hi-logo-in 0.65s cubic-bezier(0, 0, 0.2, 1) 0.25s forwards;
@@ -56,18 +56,18 @@
 }
 
 /* --------------------------------------------------
-  発光エフェクト（O の位置に精密配置）
-  top: 49.56% = cy/height = 43.66/88.1
-  left: 35.97% = cx/width = 285.49/793.77
-  width: 10.94% = diameter/width = 86.82/793.77
+  発光エフェクト（赤点の位置に精密配置）
+  top: 50.06% = cy/height = 422.05/843.1
+  left: 58.57% = cx/width = 421.55/719.75
+  width: 20.83% = diameter/width = 149.96/719.75
   ③ 赤い点が静かに発光
 -------------------------------------------------- */
 .hi-glow {
   position: absolute;
-  top: 49.56%;
-  left: 35.97%;
+  top: 50.06%;
+  left: 58.57%;
   transform: translate(-50%, -50%);
-  width: 10.94%;
+  width: 20.83%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(
