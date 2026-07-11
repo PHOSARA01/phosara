@@ -296,10 +296,7 @@
       <h2 class="cta-section-title" id="contact-heading">まずは、事業のお話を聞かせてください。</h2>
       <p class="cta-section-body">制作のご相談だけでなく、現状整理や方向性の確認から承っています。Business Auditを起点に、最適な進め方をご提案します。</p>
       <p class="contact-philosophy">お問い合わせは「依頼」ではなく「相談」から始まります。現状や課題を共有いただき、一緒に整理することを大切にしています。</p>
-      <!-- TODO: Formspree フォームID取得後に REPLACE_WITH_FORM_ID を実際のIDに差し替えてください
-           例: action="https://formspree.io/f/xabcdefg"
-           Formspree ダッシュボード: https://formspree.io/ -->
-      <form class="contact-form" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="post">
+      <form class="contact-form" action="https://formspree.io/f/mzdnpzpy" method="post">
         <p class="contact-form-guide">ご相談内容・業種・現在のお悩み・ご希望を分かる範囲でご記入ください。</p>
         <!-- お名前 -->
         <div class="form-group">
@@ -380,6 +377,8 @@
             aria-required="true"
           ></textarea>
         </div>
+        <!-- スパム対策: Formspree _gotcha honeypot（人間には非表示） -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <!-- プライバシー -->
         <p class="form-privacy">ご提供いただいた情報は、お問い合わせ対応以外の目的では利用しません。</p>
         <button type="submit" class="btn-primary btn--lg">送信する</button>
