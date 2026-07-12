@@ -66,20 +66,23 @@ fi
 
 header "MCP サーバー"
 
+LOCAL_NPM="$HOME/.local/npm-global"
+
 check_mcp() {
-  local pkg="$1"
-  local name="$2"
-  if npm list -g "$pkg" &>/dev/null 2>&1; then
-    ok "$name MCP: インストール済み"
+  local bin_name="$1"
+  local display="$2"
+  local bin_path="$LOCAL_NPM/bin/$bin_name"
+  if [ -f "$bin_path" ]; then
+    ok "$display MCP: $bin_path"
   else
-    warn "$name MCP: 未インストール (npm install -g $pkg)"
+    warn "$display MCP: 未インストール (TMPDIR=/tmp npm_config_cache=/tmp/npm-fresh-cache npm install -g --prefix ~/.local/npm-global @modelcontextprotocol/server-$bin_name)"
   fi
 }
 
-check_mcp "@modelcontextprotocol/server-filesystem" "filesystem"
-check_mcp "@modelcontextprotocol/server-github"     "github"
-check_mcp "@modelcontextprotocol/server-brave-search" "brave-search"
-check_mcp "@modelcontextprotocol/server-fetch"      "fetch"
+check_mcp "mcp-server-filesystem" "filesystem"
+check_mcp "mcp-server-github"     "github"
+check_mcp "mcp-server-brave-search" "brave-search"
+check_mcp "mcp-server-fetch"      "fetch"
 
 # =====================================================================
 # 3. 環境変数
@@ -101,10 +104,12 @@ check_var() {
   local var_name="$1"
   local display="$2"
   local value="${!var_name:-}"
-  if [ -n "$value" ]; then
-    ok "$display: 設定済み"
-  else
+  if [ -z "$value" ]; then
     fail "$display: 未設定 (.env に $var_name を設定してください)"
+  elif echo "$value" | grep -qE "your-|your_|REPLACE_WITH|placeholder|xxx|your-key-here|your-token-here"; then
+    fail "$display: プレースホルダーのまま（実際の値を .env に設定してください）"
+  else
+    ok "$display: 設定済み"
   fi
 }
 
@@ -118,7 +123,7 @@ check_var "BRAVE_SEARCH_API_KEY"        "BRAVE_SEARCH_API_KEY"
 
 header "セキュリティ"
 
-if git -C "$REPO_DIR" check-ignore "$ENV_FILE" &>/dev/null 2>&1; then
+if git -C "$REPO_DIR" check-ignore ".env" &>/dev/null 2>&1; then
   ok ".env は .gitignore に含まれています"
 else
   if [ -f "$ENV_FILE" ]; then

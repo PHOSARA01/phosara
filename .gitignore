@@ -75,5 +75,8 @@ ai-agent/logs/batch-*.log
 # AI Agent — 実行時生成ファイル（シークレットを含む）
 ai-agent/mcp-config.runtime.json
 
+# Claude Code — プロジェクト MCP 設定（マシン固有の絶対パス・シークレットを含む）
+.mcp.json
+
 # n8n キャッシュ
 n8n/.cache/

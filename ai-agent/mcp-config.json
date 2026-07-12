@@ -1,33 +1,38 @@
 {
   "mcpServers": {
     "filesystem": {
-      "command": "npx",
+      "command": "node",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
+        "/Users/hiwatarishouta/.local/npm-global/bin/mcp-server-filesystem",
         "__REPO_ROOT__"
       ],
       "description": "ローカル Markdown ファイルの読み書き（REPO_ROOT は scripts/morning-batch.sh が実行時に差し替える）"
     },
     "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "command": "node",
+      "args": [
+        "/Users/hiwatarishouta/.local/npm-global/bin/mcp-server-github"
+      ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "__GITHUB_PERSONAL_ACCESS_TOKEN__"
       },
       "description": "GitHub コミット・ファイル読み込み"
     },
     "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "command": "node",
+      "args": [
+        "/Users/hiwatarishouta/.local/npm-global/bin/mcp-server-brave-search"
+      ],
       "env": {
         "BRAVE_API_KEY": "__BRAVE_SEARCH_API_KEY__"
       },
       "description": "企業 Web 調査（最大 5 クエリ / ターゲット）"
     },
     "fetch": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "command": "node",
+      "args": [
+        "/Users/hiwatarishouta/.local/npm-global/bin/mcp-server-fetch"
+      ],
       "description": "企業公式サイトのページ取得（公開情報のみ）"
     }
   }
