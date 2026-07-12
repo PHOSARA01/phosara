@@ -41,7 +41,8 @@ check_env() {
   fi
 }
 
-check_env "ANTHROPIC_API_KEY"
+# ANTHROPIC_API_KEY は claude.ai OAuth 認証利用時は不要
+# check_env "ANTHROPIC_API_KEY"
 check_env "GITHUB_PERSONAL_ACCESS_TOKEN"
 check_env "BRAVE_SEARCH_API_KEY"
 

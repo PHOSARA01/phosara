@@ -88,6 +88,25 @@ check_mcp "mcp-server-fetch"      "fetch"
 # 3. 環境変数
 # =====================================================================
 
+header "Claude Code 認証"
+
+if command -v claude &>/dev/null; then
+  CLAUDE_AUTH_RAW="$(claude auth status 2>/dev/null || true)"
+  CLAUDE_LOGGED_IN=""
+  CLAUDE_AUTH_METHOD=""
+  if echo "${CLAUDE_AUTH_RAW}" | grep -q '"loggedIn": *true'; then
+    CLAUDE_LOGGED_IN="true"
+  fi
+  CLAUDE_AUTH_METHOD="$(echo "${CLAUDE_AUTH_RAW}" | grep -o '"authMethod": *"[^"]*"' | grep -o '"[^"]*"$' | tr -d '"')"
+  if [ "${CLAUDE_LOGGED_IN}" = "true" ]; then
+    ok "Claude Code OAuth: ${CLAUDE_AUTH_METHOD} (logged in)"
+  else
+    warn "Claude Code: not logged in (run: claude login)"
+  fi
+else
+  warn "Claude Code: not found"
+fi
+
 header "環境変数"
 
 ENV_FILE="$REPO_DIR/.env"
@@ -113,7 +132,18 @@ check_var() {
   fi
 }
 
-check_var "ANTHROPIC_API_KEY"           "ANTHROPIC_API_KEY"
+check_var_optional() {
+  local var_name="$1"
+  local display="$2"
+  local value="${!var_name:-}"
+  if [ -z "$value" ] || echo "$value" | grep -qE "your-|your_|REPLACE_WITH|placeholder|xxx|your-key-here|your-token-here"; then
+    warn "$display: 未設定（claude.ai OAuth 利用時は不要）"
+  else
+    ok "$display: 設定済み"
+  fi
+}
+
+check_var_optional "ANTHROPIC_API_KEY"           "ANTHROPIC_API_KEY"
 check_var "GITHUB_PERSONAL_ACCESS_TOKEN" "GITHUB_PERSONAL_ACCESS_TOKEN"
 check_var "BRAVE_SEARCH_API_KEY"        "BRAVE_SEARCH_API_KEY"
 
