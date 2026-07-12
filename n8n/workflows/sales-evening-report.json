@@ -1,0 +1,71 @@
+{
+  "name": "sales-evening-report",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 18 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "trigger-evening",
+      "name": "Evening Trigger (18:00 JST Mon-Fri)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "bash /path/to/phosara/scripts/evening-batch.sh"
+      },
+      "id": "run-evening-batch",
+      "name": "evening-batch.sh 実行",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [460, 300],
+      "notes": "command の /path/to/phosara/ を実際のリポジトリパスに変更すること。"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.OWNER_EMAIL }}",
+        "subject": "📊 [PHOSARA Sales] 日次レポート {{ $now.format('MM/DD') }}",
+        "message": "本日の PHOSARA AI Sales Agent の活動レポートです。\n\n詳細は SALES_LOG.md を確認してください:\nhttps://github.com/PHOSARA01/phosara/blob/main/ai-agent/logs/SALES_LOG.md\n\n実行日時: {{ $now.format('YYYY-MM-DD HH:mm') }} JST\n\nPHOSARA AI Sales Agent",
+        "options": {}
+      },
+      "id": "send-report-email",
+      "name": "日次レポートメール送信",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gmail-credential-id",
+          "name": "PHOSARA Gmail"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Evening Trigger (18:00 JST Mon-Fri)": {
+      "main": [
+        [{ "node": "evening-batch.sh 実行", "type": "main", "index": 0 }]
+      ]
+    },
+    "evening-batch.sh 実行": {
+      "main": [
+        [{ "node": "日次レポートメール送信", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Tokyo"
+  },
+  "meta": {
+    "description": "毎夕 18:00 (JST) に evening-batch.sh を実行し、日次レポートをオーナーにメール通知する。"
+  }
+}

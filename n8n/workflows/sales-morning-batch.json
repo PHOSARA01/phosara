@@ -1,0 +1,136 @@
+{
+  "name": "sales-morning-batch",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1-5"
+            }
+          ]
+        }
+      },
+      "id": "trigger-morning",
+      "name": "Morning Trigger (09:00 JST Mon-Fri)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "notes": "月〜金 09:00 JST に朝バッチを起動する。タイムゾーンは n8n の Settings > Timezone を Asia/Tokyo に設定すること。"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 実行日が営業日か確認（祝日チェックは将来実装）\nconst now = new Date();\nconst day = now.getDay();\n// 0=日曜, 6=土曜\nif (day === 0 || day === 6) {\n  throw new Error('土日のため実行をスキップします');\n}\nreturn [{ json: { date: now.toISOString(), weekday: day } }];"
+      },
+      "id": "check-business-day",
+      "name": "営業日チェック",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "command": "bash /path/to/phosara/scripts/morning-batch.sh"
+      },
+      "id": "run-morning-batch",
+      "name": "morning-batch.sh 実行",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [680, 300],
+      "notes": "command の /path/to/phosara/ を実際のリポジトリの絶対パスに変更すること。"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.exitCode }}",
+              "operation": "equal",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "check-exit-code",
+      "name": "終了コード確認",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.OWNER_EMAIL }}",
+        "subject": "✅ [PHOSARA Sales] 朝バッチ完了 {{ $now.format('MM/DD') }}",
+        "message": "朝バッチが正常に完了しました。\n\n承認キューを確認してください:\nhttps://github.com/PHOSARA01/phosara/blob/main/ai-agent/queue/OWNER_APPROVAL_QUEUE.md\n\n実行日時: {{ $now.format('YYYY-MM-DD HH:mm') }} JST",
+        "options": {}
+      },
+      "id": "email-success",
+      "name": "完了メール送信",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [1120, 200],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gmail-credential-id",
+          "name": "PHOSARA Gmail"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.OWNER_EMAIL }}",
+        "subject": "🚨 [PHOSARA Sales] 朝バッチ失敗 {{ $now.format('MM/DD') }}",
+        "message": "朝バッチが失敗しました。ログを確認してください。\n\n終了コード: {{ $json.exitCode }}\nエラー出力: {{ $json.stderr }}\n\n実行日時: {{ $now.format('YYYY-MM-DD HH:mm') }} JST",
+        "options": {}
+      },
+      "id": "email-failure",
+      "name": "失敗アラートメール送信",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [1120, 400],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gmail-credential-id",
+          "name": "PHOSARA Gmail"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Morning Trigger (09:00 JST Mon-Fri)": {
+      "main": [
+        [{ "node": "営業日チェック", "type": "main", "index": 0 }]
+      ]
+    },
+    "営業日チェック": {
+      "main": [
+        [{ "node": "morning-batch.sh 実行", "type": "main", "index": 0 }]
+      ]
+    },
+    "morning-batch.sh 実行": {
+      "main": [
+        [{ "node": "終了コード確認", "type": "main", "index": 0 }]
+      ]
+    },
+    "終了コード確認": {
+      "main": [
+        [{ "node": "完了メール送信", "type": "main", "index": 0 }],
+        [{ "node": "失敗アラートメール送信", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Tokyo"
+  },
+  "meta": {
+    "description": "PHOSARA AI Sales Agent 朝バッチ。毎朝 09:00 (JST) に morning-batch.sh を実行し、完了・失敗をオーナーにメール通知する。",
+    "setupInstructions": [
+      "1. 'morning-batch.sh 実行' ノードの command を実際のリポジトリパスに変更する",
+      "2. Gmail OAuth2 Credential を設定して 'gmail-credential-id' に紐付ける",
+      "3. n8n の Settings > Timezone を Asia/Tokyo に設定する",
+      "4. OWNER_EMAIL 環境変数を n8n の Settings > Variables に設定する"
+    ]
+  }
+}

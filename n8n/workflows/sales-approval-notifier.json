@@ -1,0 +1,144 @@
+{
+  "name": "sales-approval-notifier",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sales-approval",
+        "options": {
+          "rawBody": true
+        }
+      },
+      "id": "github-webhook",
+      "name": "GitHub Webhook 受信",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "sales-approval",
+      "notes": "GitHub リポジトリの Settings > Webhooks で以下を設定:\nPayload URL: http://your-n8n-host/webhook/sales-approval\nContent type: application/json\nSecret: .env の N8N_WEBHOOK_SECRET の値\nEvents: Just the push event"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 変更ファイルに OWNER_APPROVAL_QUEUE.md が含まれるか確認\nconst payload = $input.first().json;\nconst commits = payload.commits || [];\nconst targetFile = 'ai-agent/queue/OWNER_APPROVAL_QUEUE.md';\n\nconst hasQueueUpdate = commits.some(commit => {\n  const modified = commit.modified || [];\n  const added = commit.added || [];\n  return [...modified, ...added].includes(targetFile);\n});\n\nif (!hasQueueUpdate) {\n  // OWNER_APPROVAL_QUEUE.md の変更でなければスキップ\n  return [{ json: { skip: true } }];\n}\n\nconst latestCommit = commits[commits.length - 1];\nreturn [{ json: {\n  skip: false,\n  pusher: payload.pusher?.name || 'AI Sales Agent',\n  commitMessage: latestCommit?.message || '',\n  timestamp: new Date().toISOString()\n}}];"
+      },
+      "id": "check-queue-update",
+      "name": "承認キュー更新チェック",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.skip }}",
+              "value2": false
+            }
+          ]
+        }
+      },
+      "id": "should-notify",
+      "name": "通知必要か判定",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/PHOSARA01/phosara/contents/ai-agent/queue/OWNER_APPROVAL_QUEUE.md",
+        "options": {
+          "headers": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer {{ $env.GITHUB_PERSONAL_ACCESS_TOKEN }}"
+              },
+              {
+                "name": "Accept",
+                "value": "application/vnd.github.v3+json"
+              }
+            ]
+          }
+        }
+      },
+      "id": "fetch-queue-content",
+      "name": "OWNER_APPROVAL_QUEUE.md 取得",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Base64 デコードして最新の AQ エントリを抽出\nconst content = Buffer.from($input.first().json.content, 'base64').toString('utf-8');\n\n// 最新の [AQ-YYYYMMDD-NNN] エントリを抽出\nconst aqPattern = /## \\[(AQ-\\d{8}-\\d{3})\\] (.+?) — 承認待ち/g;\nconst matches = [...content.matchAll(aqPattern)];\n\nif (matches.length === 0) {\n  return [{ json: { found: false } }];\n}\n\n// 最後のエントリを取得\nconst lastMatch = matches[matches.length - 1];\nconst entryId = lastMatch[1];\nconst companyName = lastMatch[2];\n\n// Confidence Score の抽出\nconst scoreMatch = content.match(new RegExp(`${entryId}[\\\\s\\\\S]+?Confidence Score.*?(\\\\d+)%`));\nconst score = scoreMatch ? scoreMatch[1] : '—';\n\n// 承認期限の抽出\nconst deadlineMatch = content.match(new RegExp(`${entryId}[\\\\s\\\\S]+?承認期限.*?(\\\\d{4}-\\\\d{2}-\\\\d{2})`));\nconst deadline = deadlineMatch ? deadlineMatch[1] : '—';\n\nreturn [{ json: {\n  found: true,\n  entryId,\n  companyName,\n  confidenceScore: score,\n  approvalDeadline: deadline,\n  queueUrl: 'https://github.com/PHOSARA01/phosara/blob/main/ai-agent/queue/OWNER_APPROVAL_QUEUE.md'\n}}];"
+      },
+      "id": "extract-entry",
+      "name": "最新エントリを抽出",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $env.OWNER_EMAIL }}",
+        "subject": "📋 [承認待ち] {{ $json.companyName }} — PHOSARA Sales Agent",
+        "message": "承認が必要な営業文が届いています。\n\n━━━━━━━━━━━━━━━━━━\n対象企業: {{ $json.companyName }}\nエントリID: {{ $json.entryId }}\nConfidence Score: {{ $json.confidenceScore }}%\n承認期限: {{ $json.approvalDeadline }}\n━━━━━━━━━━━━━━━━━━\n\n▶ 承認キューを確認する:\n{{ $json.queueUrl }}\n\n承認方法:\nファイルの「オーナーの承認欄」に以下を追記してください:\n  → 承認: 案A\n  → 承認: 案B\n  → 差戻し: （理由を記述）\n\n追記後に GitHub にコミットしてください。\n\nPHOSARA AI Sales Agent",
+        "options": {}
+      },
+      "id": "send-approval-email",
+      "name": "承認通知メール送信",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [1340, 200],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "gmail-credential-id",
+          "name": "PHOSARA Gmail"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "GitHub Webhook 受信": {
+      "main": [
+        [{ "node": "承認キュー更新チェック", "type": "main", "index": 0 }]
+      ]
+    },
+    "承認キュー更新チェック": {
+      "main": [
+        [{ "node": "通知必要か判定", "type": "main", "index": 0 }]
+      ]
+    },
+    "通知必要か判定": {
+      "main": [
+        [{ "node": "OWNER_APPROVAL_QUEUE.md 取得", "type": "main", "index": 0 }],
+        []
+      ]
+    },
+    "OWNER_APPROVAL_QUEUE.md 取得": {
+      "main": [
+        [{ "node": "最新エントリを抽出", "type": "main", "index": 0 }]
+      ]
+    },
+    "最新エントリを抽出": {
+      "main": [
+        [{ "node": "承認通知メール送信", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Tokyo"
+  },
+  "meta": {
+    "description": "GitHub push を受け取り、OWNER_APPROVAL_QUEUE.md の更新を検知してオーナーにメール通知する。",
+    "setupInstructions": [
+      "1. GitHub リポジトリ > Settings > Webhooks で Webhook を設定する",
+      "2. Payload URL: http://your-n8n-host/webhook/sales-approval",
+      "3. Content type: application/json",
+      "4. Secret: .env の N8N_WEBHOOK_SECRET の値を設定",
+      "5. Gmail OAuth2 Credential を設定する",
+      "6. n8n の Variables に OWNER_EMAIL と GITHUB_PERSONAL_ACCESS_TOKEN を設定する"
+    ]
+  }
+}

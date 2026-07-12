@@ -68,3 +68,12 @@ temp/
 *.pem
 *.key
 *.crt
+
+# AI Agent — バッチ実行ログ（大量になるため除外 / SALES_LOG.md は除外しない）
+ai-agent/logs/batch-*.log
+
+# AI Agent — 実行時生成ファイル（シークレットを含む）
+ai-agent/mcp-config.runtime.json
+
+# n8n キャッシュ
+n8n/.cache/
