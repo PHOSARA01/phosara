@@ -82,29 +82,29 @@ PHOSARA（GitHubリポジトリ）/
 │
 └── website/                      ← Vercelが配信するルートディレクトリ
     │
-    ├── index.html                → https://phosara.com/
+    ├── index.html                → https://phosara.co/
     ├── about/
-    │   └── index.html            → https://phosara.com/about/
+    │   └── index.html            → https://phosara.co/about/
     ├── approach/
-    │   └── index.html            → https://phosara.com/approach/
+    │   └── index.html            → https://phosara.co/approach/
     ├── services/
-    │   └── index.html            → https://phosara.com/services/
+    │   └── index.html            → https://phosara.co/services/
     ├── industries/
-    │   ├── index.html            → https://phosara.com/industries/
+    │   ├── index.html            → https://phosara.co/industries/
     │   ├── construction/
-    │   │   └── index.html        → https://phosara.com/industries/construction/
+    │   │   └── index.html        → https://phosara.co/industries/construction/
     │   ├── remodeling/
-    │   │   └── index.html        → https://phosara.com/industries/remodeling/
+    │   │   └── index.html        → https://phosara.co/industries/remodeling/
     │   ├── clinic/
-    │   │   └── index.html        → https://phosara.com/industries/clinic/
+    │   │   └── index.html        → https://phosara.co/industries/clinic/
     │   └── pachinko/
-    │       └── index.html        → https://phosara.com/industries/pachinko/
+    │       └── index.html        → https://phosara.co/industries/pachinko/
     ├── works/
-    │   └── index.html            → https://phosara.com/works/
+    │   └── index.html            → https://phosara.co/works/
     ├── journal/
-    │   └── index.html            → https://phosara.com/journal/
+    │   └── index.html            → https://phosara.co/journal/
     ├── contact/
-    │   └── index.html            → https://phosara.com/contact/
+    │   └── index.html            → https://phosara.co/contact/
     │
     ├── assets/
     │   ├── css/
@@ -167,12 +167,12 @@ PHOSARA（GitHubリポジトリ）/
   <!-- OGP -->
   <meta property="og:title"       content="ページタイトル | PHOSARA">
   <meta property="og:description" content="ページの説明文">
-  <meta property="og:image"       content="https://phosara.com/assets/images/og/og-default.jpg">
-  <meta property="og:url"         content="https://phosara.com/ページのURL">
+  <meta property="og:image"       content="https://phosara.co/assets/images/og/og-default.jpg">
+  <meta property="og:url"         content="https://phosara.co/ページのURL">
   <meta property="og:type"        content="website">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://phosara.com/ページのURL">
+  <link rel="canonical" href="https://phosara.co/ページのURL">
 
   <!-- Favicon -->
   <link rel="icon"             href="/favicon.ico">
@@ -739,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ```
 User-agent: *
 Allow: /
-Sitemap: https://phosara.com/sitemap.xml
+Sitemap: https://phosara.co/sitemap.xml
 ```
 
 ## sitemap.xml（基本構成）
@@ -747,14 +747,14 @@ Sitemap: https://phosara.com/sitemap.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://phosara.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://phosara.com/about/</loc><priority>0.8</priority></url>
-  <url><loc>https://phosara.com/approach/</loc><priority>0.8</priority></url>
-  <url><loc>https://phosara.com/services/</loc><priority>0.8</priority></url>
-  <url><loc>https://phosara.com/industries/</loc><priority>0.7</priority></url>
-  <url><loc>https://phosara.com/works/</loc><priority>0.7</priority></url>
-  <url><loc>https://phosara.com/journal/</loc><priority>0.6</priority></url>
-  <url><loc>https://phosara.com/contact/</loc><priority>0.9</priority></url>
+  <url><loc>https://phosara.co/</loc><priority>1.0</priority></url>
+  <url><loc>https://phosara.co/about/</loc><priority>0.8</priority></url>
+  <url><loc>https://phosara.co/approach/</loc><priority>0.8</priority></url>
+  <url><loc>https://phosara.co/services/</loc><priority>0.8</priority></url>
+  <url><loc>https://phosara.co/industries/</loc><priority>0.7</priority></url>
+  <url><loc>https://phosara.co/works/</loc><priority>0.7</priority></url>
+  <url><loc>https://phosara.co/journal/</loc><priority>0.6</priority></url>
+  <url><loc>https://phosara.co/contact/</loc><priority>0.9</priority></url>
 </urlset>
 ```
 
@@ -768,7 +768,7 @@ TOPページに以下を追加します。
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "PHOSARA",
-  "url": "https://phosara.com",
+  "url": "https://phosara.co",
   "description": "Business Auditを起点とするコンサルティングファーストのクリエイティブブランド"
 }
 </script>
@@ -835,7 +835,7 @@ Pull Requestを作成
     ↓
 develop ブランチにマージ → プレビューURL（Vercel）で確認
     ↓
-main ブランチにマージ → 本番URL（phosara.com）に反映
+main ブランチにマージ → 本番URL（phosara.co）に反映
 ```
 
 ---

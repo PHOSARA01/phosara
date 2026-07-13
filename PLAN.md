@@ -172,7 +172,7 @@
 
 **Sprint 1（今すぐ）— 最低限のSEO**
 - `<title>` と `<meta description>` の正式設定
-- `<link rel="canonical">` の確認（現在 `https://phosara.com/` 設定済み）
+- `<link rel="canonical">` の確認（現在 `https://phosara.co/` 設定済み）
 - OG タグの充填（og:title / og:description / og:image）
 - `robots.txt` と `sitemap.xml` の作成（Phase 4 計画済み）
 
@@ -224,7 +224,7 @@
 | R3 | Works 画像ゼロ | 中 | Client Zero（自社監査）のスクリーンショットで初期を乗り越える | 4 |
 | R4 | OG 画像未配置 | 中 | SNS 共有時にブランク表示。Sprint 2 までに最低限の OG 画像を作成 | 2 |
 | R5 | コピー未充填のまま公開中 | 高 | Sprint 1 を最優先で着手。それまでは index の sections を `hidden` にするか許容するか判断が必要 | 1 |
-| R6 | phosara.com DNS / SSL 未確認 | 中 | Vercel ダッシュボードでカスタムドメイン設定と SSL を確認 | 確認のみ（実装外） |
+| R6 | phosara.co DNS / SSL 未確認 | 中 | Vercel ダッシュボードでカスタムドメイン設定と SSL を確認 | 確認のみ（実装外） |
 | R7 | Google Fonts CDN 依存 | 低 | CDN 障害時に system-ui フォールバックあり（tokens.css 設定済み）。許容範囲 | — |
 | R8 | 実績ゼロ期間の信頼問題 | 中 | Client Zero（WF-08 特別実施）を最初の事例として掲載。「Process」で補完 | 4 |
 | R9 | Website_Copy v1.1 との差分 | 中 | 充填前に Copy v1.1 を必ず参照し、AI の創作コピーを一切使用しない | 全Sprint |

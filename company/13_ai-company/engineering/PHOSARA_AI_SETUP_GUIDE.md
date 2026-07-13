@@ -556,7 +556,7 @@ claude mcp add fetch -- \
 #### 動作確認
 
 ```bash
-claude -p "phosara.com のトップページのコンテンツを取得して要約して" \
+claude -p "phosara.co のトップページのコンテンツを取得して要約して" \
   --allowedTools "mcp__fetch__fetch"
 ```
 
@@ -989,7 +989,7 @@ OAuth 同意画面 → スコープを追加:
 ### 5.1 Vercel
 
 #### 概要
-PHOSARA 公式サイト（https://phosara.vercel.app）のホスティング。
+PHOSARA 公式サイト（https://phosara.co）のホスティング。
 GitHub にプッシュすると自動デプロイされる。
 AI 社員が Web サイトに変更を加えた場合、push → Vercel が自動更新する。
 
@@ -997,7 +997,7 @@ AI 社員が Web サイトに変更を加えた場合、push → Vercel が自�
 **既に設定済み。**
 - リポジトリ: PHOSARA01/phosara
 - ブランチ: main → 自動デプロイ
-- URL: https://phosara.vercel.app
+- URL: https://phosara.co
 
 #### 料金
 
@@ -1031,7 +1031,7 @@ vercel ls
 ```bash
 git push origin main
 # → Vercel が自動デプロイを開始
-# → https://phosara.vercel.app で反映を確認
+# → https://phosara.co で反映を確認
 ```
 
 #### トラブルシューティング
@@ -1069,7 +1069,7 @@ PHOSARA 公式サイトの問い合わせフォームのバックエンド。
 
 ```bash
 # フォーム送信テスト（実際の送信はしない。ローカルで確認）
-# ブラウザで https://phosara.vercel.app/#contact を開く
+# ブラウザで https://phosara.co/#contact を開く
 # 名前・メール・本文を入力して「送信」
 # 確認メールが届けば OK
 ```
@@ -1321,7 +1321,7 @@ claude -p "'PHOSARA クリエイティブ' で検索して上位3件を教えて
   --allowedTools "mcp__brave-search__brave_web_search"
 
 # fetch: ページが取得できるか
-claude -p "https://phosara.vercel.app のトップページを取得して最初の200文字を教えて" \
+claude -p "https://phosara.co のトップページを取得して最初の200文字を教えて" \
   --allowedTools "mcp__fetch__fetch"
 
 # github: リポジトリが読めるか
@@ -1487,13 +1487,13 @@ cat ai-agent/state/SALES_STATE.md           # WAITING_APPROVAL になってい�
 
 ```
 □ Vercel 接続確認完了
-  確認: git push origin main → https://phosara.vercel.app に反映
+  確認: git push origin main → https://phosara.co に反映
 
 □ Vercel Deployment が「Ready」状態であることを確認
   確認: vercel.com/phosara01 でデプロイ状況を確認
 
 □ Formspree 接続確認完了
-  確認: https://phosara.vercel.app/#contact のフォームが機能する
+  確認: https://phosara.co/#contact のフォームが機能する
 
 □ Formspree フォーム ID の確認
   確認: index.html の action="https://formspree.io/f/mzdnpzpy"
