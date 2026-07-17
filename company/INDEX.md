@@ -9,10 +9,14 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 
 | 優先 | ディレクトリ | 内容 | 主要ファイル |
 |------|-------------|------|-------------|
+| Governance | `00_governance/` | Codex標準作業・Validation・Completion Report・Human Approval・Repository Governance候補 | `CODEX_WORKFLOW_STANDARD_v1_0.md`（ACTIVE）、`PHOSARA_REPOSITORY_GOVERNANCE_MAP_v1_0.md`（DRAFT-FOR-ADOPTION・未発効・オーナー承認必須） |
+| Owner Decision | `00_governance/` | PHOSARAリポジトリの正式Authority Hierarchy・Document Standard Decision ID・Decision Status Vocabulary・Governance DRAFT INDEX登録方針・Git運用方針 | `PHOSARA_OWNER_DECISION_OQ_001_v1_0.md`（ACTIVE・DR-2026-07-15-002・Effective 2026-07-15）、`PHOSARA_OWNER_DECISION_OQ_002_v1_0.md`（ACTIVE・DR-2026-07-15-003・Effective 2026-07-15）、`PHOSARA_OWNER_DECISION_OQ_003_v1_0.md`（ACTIVE・DR-2026-07-15-004・Effective 2026-07-15）、`PHOSARA_OWNER_DECISION_OQ_004_v1_0.md`（ACTIVE・DR-2026-07-15-005・Effective 2026-07-15）、`PHOSARA_OWNER_DECISION_OQ_005_v1_0.md`（ACTIVE・DR-2026-07-15-006・Effective 2026-07-15・Git運用方針）、`PHOSARA_OWNER_DECISION_REGISTER_v1_0.md`（DRAFT-FOR-ADOPTION・Not Effective） |
+| Governance候補 | `00_governance/` | リポジトリ全体のValidation基準・結果分類・停止条件・証拠要件 | `PHOSARA_VALIDATION_GOVERNANCE_v1_0.md`（DRAFT-FOR-ADOPTION・Not Effective・Pending Owner Approval） |
 | 最高 | `01_hq-core/` | HQ Core — 全資産の根拠・原則 | `PHOSARA_HQ_CORE_v1_0.md` (50KB) |
 | 高 | `00_brand/` | ブランド最終レビュー | `BRAND_FINAL_REVIEW.md` |
 | 高 | `02_company-os/` | Company OS v2.0 + 実行ファイル群 | `PHOSARA_COMPANY_OS_v2_0.md`, `WORKFLOW.md`, `AGENTS.md` |
 | 高 | `04_sales/` | 営業標準書・現場ガイド・ログ規程・対象選定基準・営業対象リスト・実行ツールキット・初回営業先決定 | `SALES_PLAYBOOK_v2.md`, `SALES_FIELD_GUIDE.md`, `SALES_LOG_STANDARD.md`, `SALES_TARGET_CRITERIA.md`, `SALES_TARGET_LIST_TOCHIGI_v1.md`, `SALES_EXECUTION_TOOLKIT.md`, `FIRST_SALES_TARGET_DECISION.md` |
+| 正典 | `05_services/` | サービスアーキテクチャおよび販売可能サービスの領域別SSOT | `PHOSARA_SERVICE_CATALOG_v1_0.md` v1.0（ACTIVE・DR-2026-07-17-001・Effective 2026-07-17・Owner: PHOSARA HQ Owner） |
 | 高 | `05_website/` | Webサイト最終レビュー | `WEBSITE_FINAL_REVIEW.md` |
 | 高 | `11_client-success/` | Client Success Playbook・BAコミュニケーションテンプレート | `CLIENT_SUCCESS_PLAYBOOK.md`, `BUSINESS_AUDIT_COMMUNICATION_TEMPLATES.md` |
 | 参照 | `12_knowledge/` | ナレッジ最終レビュー・PBOS更新ワークフロー | `KNOWLEDGE_FINAL_REVIEW.md`, `PBOS_UPDATE_WORKFLOW.md` |
@@ -30,11 +34,56 @@ Claude Code がこのリポジトリで作業する際の参照起点。
 
 ---
 
+## Service Catalog正典
+
+| 項目 | 内容 |
+|---|---|
+| 正式文書名 | PHOSARA サービスカタログ v1.0 |
+| Canonical Path | `company/05_services/PHOSARA_SERVICE_CATALOG_v1_0.md` |
+| Version | v1.0 |
+| Status | ACTIVE |
+| Decision ID | DR-2026-07-17-001 |
+| Decision Status | APPROVED |
+| Effective Date | 2026-07-17 |
+| Owner | PHOSARA HQ Owner |
+| Approver | PHOSARA Owner |
+| Canonical Notice | LS・CS・FS体系による販売可能サービスの現行正本 |
+| 旧候補との関係 | ルート直下の`PHOSARA_SERVICE_CATALOG_v1.0.md`はCORE・S・G・M・OP・P体系を含む非採択候補であり、現行正本ではない。過去の正式採択証拠がないためSupersession Decisionの対象とはしない |
+
+---
+
+## Governance DRAFT-FOR-ADOPTION 登録
+
+次の文書は正式採用前のGovernance候補であり、すべて`DRAFT-FOR-ADOPTION`、`Pending Formal Adoption`、`Not Effective`、`Pending Owner Approval`である。INDEX登録は正式採用、ACTIVE化、発効、Canonical化または現行SSOT指定を意味しない。
+
+| Document Name | Canonical Path | Document Status | Decision Status | Effective Date | Approver | Adoption / SSOT Notice |
+|---|---|---|---|---|---|---|
+| PHOSARA Change Management Governance v1.0 | `company/00_governance/PHOSARA_CHANGE_MANAGEMENT_GOVERNANCE_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Governance Integration Review v1.0 | `company/00_governance/PHOSARA_GOVERNANCE_INTEGRATION_REVIEW_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Governance Issue Resolution v1.0 | `company/00_governance/PHOSARA_GOVERNANCE_ISSUE_RESOLUTION_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Owner Decision Register v1.0 | `company/00_governance/PHOSARA_OWNER_DECISION_REGISTER_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Release Governance v1.0 | `company/00_governance/PHOSARA_RELEASE_GOVERNANCE_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Repository Governance Map v1.0 | `company/00_governance/PHOSARA_REPOSITORY_GOVERNANCE_MAP_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Repository Path Governance v1.0 | `company/00_governance/PHOSARA_REPOSITORY_PATH_GOVERNANCE_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Supersession Register v1.0 | `company/00_governance/PHOSARA_SUPERSESSION_REGISTER_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+| PHOSARA Validation Governance v1.0 | `company/00_governance/PHOSARA_VALIDATION_GOVERNANCE_v1_0.md` | DRAFT-FOR-ADOPTION | Pending Formal Adoption | Not Effective | Pending Owner Approval | 正式採用前・現行SSOTではない |
+
+---
+
 ## ディレクトリ構造
 
 ```
 company/
 ├── INDEX.md                         ← このファイル
+├── 00_governance/
+│   ├── CODEX_WORKFLOW_STANDARD_v1_0.md ← Codex標準作業ルール（ACTIVE）
+│   ├── PHOSARA_OWNER_DECISION_OQ_001_v1_0.md ← Authority Hierarchy正式Decision（ACTIVE・DR-2026-07-15-002）
+│   ├── PHOSARA_OWNER_DECISION_OQ_002_v1_0.md ← Document Standard Decision ID正式Decision（ACTIVE・DR-2026-07-15-003）
+│   ├── PHOSARA_OWNER_DECISION_OQ_003_v1_0.md ← Decision Status Vocabulary正式Decision（ACTIVE・DR-2026-07-15-004）
+│   ├── PHOSARA_OWNER_DECISION_OQ_004_v1_0.md ← Governance DRAFT INDEX登録方針正式Decision（ACTIVE・DR-2026-07-15-005）
+│   ├── PHOSARA_OWNER_DECISION_OQ_005_v1_0.md ← Git運用方針正式Decision（ACTIVE・DR-2026-07-15-006）
+│   ├── PHOSARA_REPOSITORY_GOVERNANCE_MAP_v1_0.md ← Repository Governance Map候補（DRAFT-FOR-ADOPTION・未発効・オーナー承認必須）
+│   └── PHOSARA_VALIDATION_GOVERNANCE_v1_0.md ← Validation Governance候補（DRAFT-FOR-ADOPTION・Not Effective・Pending Owner Approval）
 ├── 00_brand/
 │   └── BRAND_FINAL_REVIEW.md        ← ブランド最終レビュー
 ├── 00_constitution/                 ← Constitution 独立化に備えたプレースホルダー
@@ -59,6 +108,8 @@ company/
 │   ├── SALES_TARGET_LIST_TOCHIGI_v1.md       ← 栃木県営業対象リスト v1.0
 │   ├── SALES_EXECUTION_TOOLKIT.md            ← 営業実行ツールキット
 │   └── FIRST_SALES_TARGET_DECISION.md        ← 初回営業先決定
+├── 05_services/
+│   └── PHOSARA_SERVICE_CATALOG_v1_0.md       ← サービスカタログ正典（v1.0・ACTIVE・DR-2026-07-17-001・Effective 2026-07-17）
 ├── 05_website/
 │   └── WEBSITE_FINAL_REVIEW.md  ← Webサイト最終レビュー
 ├── 05_audit-kit/
